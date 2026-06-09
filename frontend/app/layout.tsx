@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import { Bebas_Neue, Fira_Sans, Geist } from 'next/font/google';
 import './globals.css';
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
+import Navbar from '@/components/common/navbar';
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
 
 const bebas = Bebas_Neue({
     subsets: ['latin'],
@@ -30,9 +31,19 @@ export default function RootLayout({
     return (
         <html
             lang="en"
-            className={cn("h-full", "antialiased", bebas.variable, fira.variable, "font-sans", geist.variable)}
+            className={cn(
+                'h-full',
+                'antialiased',
+                bebas.variable,
+                fira.variable,
+                'font-sans',
+                geist.variable
+            )}
         >
-            <body className="min-h-full flex flex-col">{children}</body>
+            <body className="min-h-full flex flex-col">
+                <Navbar />
+                {children}
+            </body>
         </html>
     );
 }

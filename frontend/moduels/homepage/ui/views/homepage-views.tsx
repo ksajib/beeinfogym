@@ -1,7 +1,5 @@
-import React from 'react';
-
 const HomepageView = () => {
-    return <div>gsdhfds</div>;
+    return <div></div>;
 };
 
 export default HomepageView;
