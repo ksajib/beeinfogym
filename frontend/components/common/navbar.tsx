@@ -18,28 +18,33 @@ const Navbar = () => {
         { title: 'Contact', href: '/contact' },
     ];
 
+    console.log('pathName', pathName, typeof pathName);
+
     return (
-        <nav className="container mx-auto px-0 py-3 flex items-center justify-between">
+        <nav className="max-w-7xl  mx-auto px-0 py-3 flex items-center justify-between">
             {/* Logo */}
             <div className="flex items-center">
                 <Link href="/">
-                    <Image src="/images/logo-light.png" alt="Logo" width={100} height={50} />
+                    <Image src="/images/logo-light.png" alt="Logo" width={160} height={50} />
                 </Link>
             </div>
 
             {/* Navigation Links */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-7">
                 {navigationLinks.map((link, i) => (
                     <Link
                         key={i}
                         href={link.href}
-                        className={`text-white font-mono hover:text-blue-500 ${pathName === link.href ? 'text-blue-500' : ''}`}
+                        className={`font-mono uppercase text-sm font-normal ${pathName === link.href ? 'text-[#f5c518]' : 'text-white'}`}
                     >
                         {link.title}
                     </Link>
                 ))}
 
-                <Button variant="cta" className="font-mono px-5 py-5 flex gap-2 items-center">
+                <Button
+                    variant="cta"
+                    className="font-mono rounded px-5 text-sm py-5 flex gap-2 items-center"
+                >
                     Get Started
                     <MoveRightIcon />
                 </Button>
