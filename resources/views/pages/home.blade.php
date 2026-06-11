@@ -64,7 +64,10 @@
         <x-homepage.video-gallery />
 
         {{-- CTA --}}
-        <x-homepage.cta />
+        <x-common.cta title="Ready to transform your gym?"
+            para="Join over 110 gyms who have already revolutionized their operations
+          with Beeinfo. Get started in minutes."
+            button1="Get Started Today" button2="View Pricing" link1="/contact" link2="/pricing" />
 
         {{-- Numbers --}}
         <x-homepage.numbers />
