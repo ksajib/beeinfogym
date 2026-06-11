@@ -42,18 +42,18 @@
         </header>
 
         {{-- Statistics --}}
-        <x-statistics />
+        <x-homepage.statistics />
 
         {{-- Management --}}
-        <x-management />
+        <x-homepage.management />
 
         {{-- Features --}}
-        <x-features />
+        <x-homepage.features />
 
         {{-- Access Controls --}}
-        <x-smart_access />
+        <x-homepage.smart_access />
 
         {{-- About Section --}}
-        <x-about />
+        <x-homepage.about />
     </div>
 @endsection

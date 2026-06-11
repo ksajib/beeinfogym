@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    <x-navbar />
+    <x-common.navbar />
 
     @yield('content')
 
