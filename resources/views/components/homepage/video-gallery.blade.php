@@ -3,7 +3,7 @@
 
         <div class="text-center mx-auto mb-5" style="max-width: 560px">
             <div class="cheadline cheadline-center">See It In Action</div>
-            <h2 class="section-title">Watch how beeinfo works</h2>
+            <h2 class="section-title text-light">Watch how beeinfo works</h2>
         </div>
 
         <!-- ── VIDEO SHORTS ── -->

@@ -64,5 +64,8 @@
 
         {{-- Video Gallery --}}
         <x-homepage.video-gallery />
+
+        {{-- CTA --}}
+        <x-homepage.cta />
     </div>
 @endsection
