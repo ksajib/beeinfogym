@@ -46,5 +46,8 @@
 
         {{-- Management --}}
         <x-management />
+
+        {{-- Features --}}
+        <x-features />
     </div>
 @endsection
