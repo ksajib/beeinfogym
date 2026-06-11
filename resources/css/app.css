@@ -390,7 +390,7 @@ section {
   height: 100vh;
   overflow: hidden;
   padding: 30px 0px;
-  background: url(../images/header-inner.png) center center/cover no-repeat;
+  background: url(../../public/images/header-inner.png) center center/cover no-repeat;
 }
 .hero-wm {
   position: absolute;

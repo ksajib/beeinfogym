@@ -1,2 +1,2 @@
-@props(['text'])
-<a href="pricing.html" class="btn-ghost-custom">{{ $text }} <span class="arr">→</span></a>
+@props(['text', 'to' => '/'])
+<a href="{{ $to }}" class="btn-ghost-custom">{{ $text }} <span class="arr">→</span></a>
