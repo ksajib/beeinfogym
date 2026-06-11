@@ -55,5 +55,8 @@
 
         {{-- About Section --}}
         <x-homepage.about />
+
+        {{-- Image Gallery --}}
+        <x-homepage.gallery />
     </div>
 @endsection
