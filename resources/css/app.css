@@ -397,7 +397,7 @@ section {
   right: -10px;
   bottom: 120px;
   z-index: 2;
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 120px;
   color: rgba(245,197,24,.08);
   line-height: 1;
@@ -458,7 +458,7 @@ section {
   animation: scrollBob 2.2s ease-in-out infinite;
 }
 .hf-num {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 20px;
   color: var(--gold, #F5C518);
   line-height: 1;
@@ -498,7 +498,7 @@ section {
   background: var(--gold);
 }
 .hero-title {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 60px;
   line-height: 1.1;
   letter-spacing: -1px;
@@ -565,7 +565,7 @@ section {
   border-right: 1px solid var(--border);
 }
 .mq-num {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 45px;
   color: var(--gold);
 }
@@ -583,7 +583,7 @@ section {
   padding: 60px 0px;
 }
 h2.section-title {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: clamp(44px, 6vw, 45px);
   line-height: 1;
   letter-spacing: 1px;
@@ -665,7 +665,7 @@ h2.section-title {
   background: #191919;
 }
 .feat-hero-bg {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 220px;
   color: rgba(245, 197, 24, 0.042);
   position: absolute;
@@ -708,7 +708,7 @@ h2.section-title {
   background: var(--gold);
 }
 .feat-hero-ttl {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: clamp(44px, 5vw, 50px);
   letter-spacing: 3px;
   line-height: 1;
@@ -865,7 +865,7 @@ h2.section-title {
   }
 }
 .feat-mini-ttl {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 24px;
   letter-spacing: 1.5px;
   color: var(--white);
@@ -913,7 +913,7 @@ h2.section-title {
   color: var(--white);
 }
 .anum {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 28px;
   color: var(--gold);
   min-width: 32px;
@@ -963,7 +963,7 @@ h2.section-title {
   }
 }
 .about-circle-num {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 30px;
   line-height: 1;
 }
@@ -1000,7 +1000,7 @@ h2.section-title {
   margin-bottom: 8px;
 }
 .aval-ttl {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 18px;
   letter-spacing: 1px;
   color: var(--white);
@@ -1066,7 +1066,7 @@ h2.section-title {
   object-fit: cover;
 }
 .tname {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-weight: 400;
   font-size: 20px;
   letter-spacing: 1px;
@@ -1192,7 +1192,7 @@ h2.section-title {
   text-align: center;
 }
 .cta-snum {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 48px;
   color: var(--gold);
 }
@@ -1280,7 +1280,7 @@ h2.section-title {
   transform: scaleX(1);
 }
 .stat-bg {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 110px;
   color: rgba(245, 197, 24, 0.03);
   position: absolute;
@@ -1290,7 +1290,7 @@ h2.section-title {
   pointer-events: none;
 }
 .stat-num {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 64px;
   line-height: 1;
   color: var(--gold);
@@ -1330,7 +1330,7 @@ h2.section-title {
   z-index: 2;
 }
 .img-accent .ac-num {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 30px;
   line-height: 1;
   margin-bottom: 2px;
@@ -1389,14 +1389,14 @@ h2.section-title {
   padding-left: 10px;
 }
 .pillar-num {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 28px;
   color: var(--gold);
   min-width: 32px;
   margin-top: 1px;
 }
 .pillar h4 {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 18px;
   letter-spacing: 1px;
   color: var(--white);
@@ -1485,7 +1485,7 @@ h2.section-title {
   margin-bottom: 10px;
 }
 .tl-title {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 30px;
   letter-spacing: 2px;
   color: var(--white);
@@ -1551,7 +1551,7 @@ h2.section-title {
   transform: scaleX(1);
 }
 .th-num {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 45px;
   color: var(--gold);
   line-height: 1;
@@ -1612,7 +1612,7 @@ h2.section-title {
 }
 .trust-badge-text strong {
   display: block;
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 25px;
   color: var(--gold);
   line-height: 1;
@@ -1676,7 +1676,7 @@ h2.section-title {
   color: rgba(245, 197, 24, 0.09);
 }
 .val-name {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 20px;
   letter-spacing: 1.5px;
   color: var(--white);
@@ -1785,7 +1785,7 @@ h2.section-title {
   padding-bottom: 10px;
 }
 .pnum {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 72px;
   line-height: 1;
   color: var(--white);
@@ -1795,7 +1795,7 @@ h2.section-title {
   color: var(--gold);
 }
 .pcustom {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 42px;
   line-height: 1;
   color: var(--white);
@@ -1870,7 +1870,7 @@ h2.section-title {
   margin-bottom: 22px;
 }
 .ent-body h4 {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 25px;
   margin-bottom: 6px;
   color: var(--white);
@@ -2011,7 +2011,7 @@ h2.section-title {
   flex-shrink: 0;
 }
 .contact-info-item h5 {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 18px;
   letter-spacing: 2px;
   color: var(--white);
@@ -2199,7 +2199,7 @@ h2.section-title {
   display: block;
 }
 .feat-pill h5 {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 22px;
   letter-spacing: 1px;
   margin-bottom: 8px;
@@ -2322,7 +2322,7 @@ h2.section-title {
   transform: scaleX(1);
 }
 .adv-num {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 80px;
   color: rgba(245, 197, 24, 0.04);
   position: absolute;
@@ -2341,7 +2341,7 @@ h2.section-title {
   display: block;
 }
 .adv-card h5 {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 21px;
   letter-spacing: 1px;
   color: var(--white);
@@ -2404,7 +2404,7 @@ h2.section-title {
   margin-bottom: 6px;
 }
 .metric-val {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 25px;
   letter-spacing: 1px;
 }
@@ -2447,7 +2447,7 @@ h2.section-title {
   padding-left: 8px;
 }
 .db-num {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 18px;
   color: var(--gold);
   min-width: 28px;
@@ -2462,7 +2462,7 @@ h2.section-title {
 }
 .testi-quote::before {
   content: '"';
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 120px;
   color: rgba(245, 197, 24, 0.06);
   position: absolute;
@@ -2482,7 +2482,7 @@ h2.section-title {
   margin-bottom: 16px;
 }
 .testi-author {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 15px;
   letter-spacing: 1px;
   color: var(--gold);
@@ -2508,7 +2508,7 @@ h2.section-title {
   padding: 28px 24px;
 }
 .toc-heading {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 18px;
   letter-spacing: 2px;
   color: var(--white);
@@ -2608,7 +2608,7 @@ h2.section-title {
   border-bottom: 1px solid var(--border);
 }
 .term-num {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 36px;
   color: rgba(245, 197, 24, 0.25);
   line-height: 1;
@@ -2617,7 +2617,7 @@ h2.section-title {
   text-align: right;
 }
 .term-title {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 26px;
   letter-spacing: 1.5px;
   color: var(--white);
@@ -2687,7 +2687,7 @@ h2.section-title {
   flex-grow: 1;
 }
 .deletion-card-body h5 {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 22px;
   letter-spacing: 1px;
   color: var(--accent);
@@ -2793,7 +2793,7 @@ h2.section-title {
   margin-bottom: 16px;
 }
 .related-card h5 {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 22px;
   letter-spacing: 1px;
   color: var(--white);
@@ -2843,7 +2843,7 @@ h2.section-title {
   background: var(--accent);
 }
 .page-hero-inner h1 {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 80px;
   line-height: 0.9;
   letter-spacing: -1px;
@@ -2914,7 +2914,7 @@ h2.section-title {
   margin-bottom: 20px;
 }
 .ns-heading {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 20px;
   letter-spacing: 2px;
   color: var(--white);
@@ -2954,7 +2954,7 @@ h2.section-title {
   padding-left: 6px;
 }
 .ns-num {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 22px;
   color: var(--gold);
   line-height: 1.25;
@@ -3320,7 +3320,7 @@ h2.section-title {
   margin-bottom: 12px;
 }
 .blog-card-title {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 20px;
   letter-spacing: 1px;
   line-height: 1.2;
@@ -3544,7 +3544,7 @@ h2.section-title {
   margin-bottom: 20px;
 }
 .article-content h2 {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 35px;
   letter-spacing: 1.5px;
   color: var(--white);
@@ -3635,7 +3635,7 @@ h2.section-title {
   text-transform: uppercase;
 }
 .article-content h3 {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 22px;
   font-weight: 400;
   color: var(--white);
@@ -3674,7 +3674,7 @@ h2.section-title {
   margin-bottom: 20px;
 }
 .widget-heading {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 18px;
   letter-spacing: 2px;
   color: var(--white);
@@ -4040,7 +4040,7 @@ h2.section-title {
   margin-bottom: 16px;
 }
 .filter-card-heading {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 18px;
   letter-spacing: 2px;
   color: var(--white);
@@ -4153,7 +4153,7 @@ h2.section-title {
   border-bottom: 1px solid var(--border);
 }
 .results-count {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 28px;
   letter-spacing: 1px;
   color: var(--white);
@@ -4289,7 +4289,7 @@ h2.section-title {
   padding: 5px;
 }
 .grid-title {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 18px;
   letter-spacing: 0.5px;
   color: var(--white);
@@ -4500,7 +4500,7 @@ h2.section-title {
   background: var(--dark);
 }
 .content-h2 {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 35px;
   letter-spacing: 1.5px;
   color: var(--white);
@@ -4622,7 +4622,7 @@ h2.section-title {
   pointer-events: none;
 }
 .apply-card h3 {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 30px;
   letter-spacing: 2px;
   color: var(--white);
@@ -4728,7 +4728,7 @@ h2.section-title {
   margin-bottom: 16px;
 }
 .qc-heading {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 18px;
   letter-spacing: 2px;
   color: var(--white);
@@ -4902,7 +4902,7 @@ footer {
   padding: 60px 60px 40px;
 }
 .flogo {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 28px;
   letter-spacing: 3px;
   color: var(--white);
@@ -4949,7 +4949,7 @@ footer {
   box-shadow: 0 0 12px rgba(245, 197, 24, 0.2);
 }
 .fcol h4 {
-  font-family: var(--bebas-neue);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 18px;
   letter-spacing: 2px;
   margin-bottom: 20px;

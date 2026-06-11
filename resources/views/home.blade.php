@@ -42,5 +42,9 @@
         </header>
 
         {{-- Statistics --}}
+        <x-statistics />
+
+        {{-- Management --}}
+        <x-management />
     </div>
 @endsection
