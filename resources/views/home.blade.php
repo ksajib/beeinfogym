@@ -52,5 +52,8 @@
 
         {{-- Access Controls --}}
         <x-smart_access />
+
+        {{-- About Section --}}
+        <x-about />
     </div>
 @endsection
