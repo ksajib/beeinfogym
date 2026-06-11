@@ -49,5 +49,8 @@
 
         {{-- Features --}}
         <x-features />
+
+        {{-- Access Controls --}}
+        <x-smart_access />
     </div>
 @endsection
