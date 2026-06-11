@@ -30,7 +30,7 @@
     <button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
         <i class="bi bi-arrow-up"></i>
     </button>
-    
+
     <x-common.navbar />
 
     @yield('content')
