@@ -58,5 +58,8 @@
 
         {{-- Image Gallery --}}
         <x-homepage.gallery />
+
+        {{-- Client Testimonial --}}
+        <x-homepage.testimonial :testimonials="$testimonials" />
     </div>
 @endsection
