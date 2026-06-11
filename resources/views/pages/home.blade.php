@@ -65,5 +65,8 @@
 
         {{-- CTA --}}
         <x-homepage.cta />
+
+        {{-- Numbers --}}
+        <x-homepage.numbers />
     </div>
 @endsection

@@ -25,12 +25,114 @@
 
     @yield('content')
 
+    <x-common.footer />
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="//unpkg.com/alpinejs" defer></script>
     <script src="https://unpkg.com/feather-icons"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
+    </script>
+    <script>
+        // -- ── IMAGE MASONRY GALLERY ── --
+        const galleryItems = document.querySelectorAll('.masonry-item img, .gallery-preview');
+        const modalImage = document.getElementById('modalImage');
+
+        const imageModal = new bootstrap.Modal(
+            document.getElementById('imagePreviewModal')
+        );
+
+        galleryItems.forEach((img) => {
+            img.addEventListener('click', () => {
+                modalImage.src = img.src;
+                imageModal.show();
+            });
+        });
+    </script>
+    <script>
+        // -- ── VIDEO GALLERY ── --
+        const videoCards = document.querySelectorAll('.video-card');
+        const youtubeVideo = document.getElementById('youtubeVideo');
+        const videoModal = new bootstrap.Modal(
+            document.getElementById('videoModal')
+        );
+
+        videoCards.forEach((card) => {
+            card.addEventListener('click', () => {
+                document.activeElement.blur();
+                const videoId = card.getAttribute('data-video');
+                youtubeVideo.src =
+                    `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                videoModal.show();
+            });
+        });
+
+        document
+            .getElementById('videoModal')
+            .addEventListener('hidden.bs.modal', () => {
+                youtubeVideo.src = '';
+            });
+    </script>
+    <script>
+        // -- ── SHORT VIDEO GALLERY ── --
+        const shortModalEl = document.getElementById('shortvideoModal');
+        const shortModal = new bootstrap.Modal(shortModalEl);
+        const shortFrame = document.getElementById("videoFrame");
+
+        function openVideo(videoId) {
+            shortFrame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+            shortModal.show();
+        }
+
+        // stop video when modal closes
+        shortModalEl.addEventListener('hidden.bs.modal', function() {
+            shortFrame.src = "";
+        });
+    </script>
+    <script>
+        /* ── MOVE SHORTS ── */
+        const track = document.getElementById("shortsTrack");
+
+        let index = 0;
+
+        function getVisibleItems() {
+            if (window.innerWidth >= 992) return 4;
+            if (window.innerWidth >= 768) return 3;
+            return 1;
+        }
+
+        function moveShorts(direction) {
+            if (!track) return;
+
+            const items = document.querySelectorAll(".shorts-item");
+            if (!items.length) return;
+
+            const visible = getVisibleItems();
+
+            index += direction;
+
+            const maxIndex = items.length - visible;
+
+            if (index < 0) index = 0;
+            if (index > maxIndex) index = maxIndex;
+
+            const itemWidth = items[0].offsetWidth + 12;
+
+            track.style.transform = `translateX(-${index * itemWidth}px)`;
+        }
+
+        window.addEventListener("resize", () => {
+            if (!track) return;
+
+            index = 0;
+            track.style.transform = "translateX(0px)";
+        });
+
+        window.addEventListener("resize", () => {
+            index = 0;
+            track.style.transform = "translateX(0px)";
+        });
     </script>
     @vite(['resources/js/app.js'])
 </body>
