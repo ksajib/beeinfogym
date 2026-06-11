@@ -34,8 +34,7 @@
                     </div>
                 </div>
                 <div class="mt-4">
-                    <a href="#features" class="btn-primary-custom">Explore All Features <span
-                            class="arr">→</span></a>
+                    <x-common.bg-button text="Explore All Features" />
                 </div>
             </div>
             <div class="col-lg-6">

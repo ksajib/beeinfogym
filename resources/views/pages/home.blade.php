@@ -17,10 +17,8 @@
                                     clubs. Automate billing, manage members, and grow revenue with our smart cloud-based
                                     solution.</p>
                                 <div class="d-flex flex-wrap gap-3">
-                                    <a href="contact.html" class="btn-primary-custom">Request Free Demo <span
-                                            class="arr">→</span></a>
-                                    <a href="#features" class="btn-ghost-custom">Explore Features <span
-                                            class="arr">→</span></a>
+                                    <x-common.bg-button text="Request Free Demo" />
+                                    <x-common.tra-button text="Explore Features" />
                                 </div>
                             </div>
                         </div>

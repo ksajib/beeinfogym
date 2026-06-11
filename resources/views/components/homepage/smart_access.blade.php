@@ -32,8 +32,7 @@
                     </li>
                 </ul>
                 <div class="mt-4">
-                    <a href="gym-access-control.html" class="btn-primary-custom">Learn About Access Control <span
-                            class="arr">→</span></a>
+                    <x-common.bg-button text="Learn About Access Control" />
                 </div>
             </div>
         </div>
