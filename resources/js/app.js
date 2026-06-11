@@ -47,7 +47,7 @@ const logo = document.getElementById("navbar-logo");
 window.addEventListener("scroll", () => {
   if (window.scrollY > 50) {
     navbar.classList.add("active");
-    logo.src = "assets/images/logo-light.png";
+    logo.src = "{{ Vite::asset('public/images/logo-light.png') }}";
   } else {
     navbar.classList.remove("active");
   }

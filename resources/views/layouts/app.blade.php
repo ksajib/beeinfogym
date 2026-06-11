@@ -21,11 +21,22 @@
 </head>
 
 <body>
+    <!-- ── PRELOADER ── -->
+    <div id="loader">
+        <div class="icon"></div>
+    </div>
+
+    <!-- ── BACK TO TOP ── -->
+    <button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+    
     <x-common.navbar />
 
     @yield('content')
 
     <x-common.footer />
+    <x-common.cookies />
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="//unpkg.com/alpinejs" defer></script>
@@ -133,6 +144,43 @@
             index = 0;
             track.style.transform = "translateX(0px)";
         });
+    </script>
+    <script>
+        (function() {
+            var banner = document.getElementById('cookieBanner');
+            var consent = localStorage.getItem('beeinfo_cookie_consent');
+
+            if (!consent) {
+                // Slight delay so it doesn't flash immediately on load
+                setTimeout(function() {
+                    banner.style.display = 'block';
+                    // Slide-in animation
+                    banner.style.transform = 'translateY(100%)';
+                    banner.style.transition = 'transform 0.4s cubic-bezier(0.22, 1, 0.36, 1)';
+                    requestAnimationFrame(function() {
+                        requestAnimationFrame(function() {
+                            banner.style.transform = 'translateY(0)';
+                        });
+                    });
+                }, 1200);
+            }
+
+            function dismissBanner(value) {
+                localStorage.setItem('beeinfo_cookie_consent', value);
+                banner.style.transform = 'translateY(100%)';
+                setTimeout(function() {
+                    banner.style.display = 'none';
+                }, 420);
+            }
+
+            document.getElementById('cookieAccept').addEventListener('click', function() {
+                dismissBanner('accepted');
+            });
+
+            document.getElementById('cookieDecline').addEventListener('click', function() {
+                dismissBanner('declined');
+            });
+        })();
     </script>
     @vite(['resources/js/app.js'])
 </body>
