@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AccessController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PricingController;
@@ -13,4 +14,5 @@ Route::get("/about", [AboutController::class, "index"]);
 Route::get("/gym-access-control", [AccessController::class, "index"]);
 Route::get("/contact", [ContactController::class, "index"]);
 Route::get("/pricing", [PricingController::class, "index"]);
+Route::get("/fitness-blog", [BlogController::class, "index"]);
 // Route::get("/testimonial", [TestimonialController::class, "index"]);

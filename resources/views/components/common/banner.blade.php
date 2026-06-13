@@ -1,4 +1,14 @@
-@props(['bgText', 'tagline', 'title', 'colTitle', 'para', 'button1', 'button2', 'link1', 'link2'])
+@props([
+    'bgText',
+    'tagline',
+    'title',
+    'colTitle',
+    'para',
+    'button1' => null,
+    'button2' => null,
+    'link1' => '#',
+    'link2' => '#',
+])
 
 <header class="hero-header-inner">
     <div class="hero-scroll-hint">
@@ -14,8 +24,13 @@
                     <h1 class="hero-title">{{ $title }}<br><span class="highlight">{{ $colTitle }}</span></h1>
                     <p class="hero-subtitle">{{ $para }}</p>
                     <div class="d-flex flex-wrap gap-3">
-                        <x-common.bg-button :text="$button1" :to="$link1" />
-                        <x-common.tra-button :text="$button2" :to="$link2" />
+                        @if ($button1)
+                            <x-common.bg-button :text="$button1" :to="$link1" />
+                        @endif
+
+                        @if ($button2)
+                            <x-common.tra-button :text="$button2" :to="$link2" />
+                        @endif
                     </div>
                 </div>
             </div>
