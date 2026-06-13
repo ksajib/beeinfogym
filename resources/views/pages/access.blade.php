@@ -12,4 +12,21 @@
 
     {{-- REMOTE MANAGEMENT --}}
     <x-accesspage.mobile />
+
+    {{-- Touch Free --}}
+    <x-accesspage.touch-free />
+
+    {{-- Competitive Advantage --}}
+    <x-accesspage.advantage :advantages="$advantages" :metrics="$metrics" />
+
+    {{-- Database Sync --}}
+    <x-accesspage.database />
+
+    {{-- TAILGATING DETECTION --}}
+    <x-accesspage.tailgate />
+
+    {{-- CTA --}}
+    <x-common.cta title="Secure your facility today"
+        para="Join thousands of gyms worldwide who rely on our smart access control system to run 24/7 with zero front-desk dependency."
+        button1="Request a Demo" button2="View Pricing" link1="/contact" link2="/pricing" />
 @endsection
