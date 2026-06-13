@@ -60,6 +60,30 @@ section {
     box-shadow 0.35s,
     transform 0.25s;
 }
+
+.gold-button{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 38px;
+  background: var(--gold);
+  color: #060606;
+  font-family: var(--fira-sans);
+  font-weight: 400;
+  font-size: 15px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 0;
+  overflow: hidden;
+  transition:
+    box-shadow 0.35s,
+    transform 0.25s;
+}
+
 .btn-primary-custom::before {
   content: "";
   position: absolute;
@@ -504,6 +528,16 @@ section {
   letter-spacing: -1px;
   margin-bottom: 32px;
 }
+
+.title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 40px;
+}
+
+.subtitle{
+   font-family: "Fira Sans", sans-serif;
+}
+
 .hero-title .highlight {
   color: var(--gold);
 }
