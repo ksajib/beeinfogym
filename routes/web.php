@@ -20,4 +20,5 @@ Route::get("/pricing", [PricingController::class, "index"]);
 Route::get("/fitness-blog", [BlogController::class, "index"]);
 Route::get("/careers", [CareerController::class, "index"]);
 Route::get("/register", [RegisterController::class, "index"]);
+Route::post("/register", [RegisterController::class, "store"]);
 Route::get("/login", [LoginController::class, "index"]);

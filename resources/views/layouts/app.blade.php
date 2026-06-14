@@ -32,6 +32,7 @@
     </button>
 
     <x-common.navbar />
+    <div id="toast-container"></div>
 
     @yield('content')
 
@@ -181,6 +182,28 @@
                 dismissBanner('declined');
             });
         })();
+    </script>
+    <script>
+        function showToast(type, title, message) {
+            const container = document.getElementById("toast-container");
+
+            const toast = document.createElement("div");
+            toast.className = `toast toast-${type}`;
+
+            toast.innerHTML = `
+        <div>
+            <h4>${title}</h4>
+            <p>${message}</p>
+        </div>
+        <button onclick="this.parentElement.remove()">×</button>
+    `;
+
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
     </script>
     @vite(['resources/js/app.js'])
 </body>
