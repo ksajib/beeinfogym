@@ -9,6 +9,7 @@ use App\Http\Controllers\CareerController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PricingController;
+use App\Http\Controllers\UserDashboard\DashboardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -23,3 +24,8 @@ Route::get("/register", [RegisterController::class, "index"]);
 Route::post("/register", [RegisterController::class, "store"]);
 Route::get("/login", [LoginController::class, "index"]);
 Route::post("/login", [LoginController::class, "store"]);
+
+// Dashboard Routes
+Route::prefix("user")->middleware("auth")->group(function () {
+    Route::get("/dashboard", [DashboardController::class, "index"]);
+});

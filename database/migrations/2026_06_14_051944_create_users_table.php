@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('userName')->unique();
             $table->string('password');
             $table->string("profile_image")->nullable();
+            $table->enum('userType', ['admin', 'user', 'manager'])->default('user');
             $table->timestamps();
         });
     }
