@@ -22,8 +22,9 @@ Route::get("/fitness-blog", [BlogController::class, "index"]);
 Route::get("/careers", [CareerController::class, "index"]);
 Route::get("/register", [RegisterController::class, "index"]);
 Route::post("/register", [RegisterController::class, "store"]);
-Route::get("/login", [LoginController::class, "index"]);
+Route::get("/login", [LoginController::class, "index"])->name("login");
 Route::post("/login", [LoginController::class, "store"]);
+Route::get("/logout", [LoginController::class, "logout"])->middleware("auth")->name("logout");
 
 // Dashboard Routes
 Route::prefix("user")->middleware("auth")->group(function () {

@@ -19,7 +19,6 @@ class LoginController extends Controller
     public function store(Request $req)
     {
         try {
-
             $validator = Validator::make($req->all(), [
                 'userName' => 'required|string',
                 'password' => 'required|min:8',
@@ -36,19 +35,16 @@ class LoginController extends Controller
                 ], 422);
             }
 
-            // 🔐 Attempt login
             if (!Auth::attempt($req->only('userName', 'password'))) {
                 return response()->json([
                     'message' => 'Invalid user name or password'
                 ], 401);
             }
 
-            // 🔁 Regenerate session (security)
             $req->session()->regenerate();
 
             $user = Auth::user();
 
-            // 🎯 Role-based redirect
             $redirect = match ($user->userType) {
                 'admin' => '/admin/dashboard',
                 default => '/user/dashboard',
@@ -60,10 +56,26 @@ class LoginController extends Controller
                 'user' => $user
             ]);
         } catch (Throwable $e) {
-
             return response()->json([
                 'message' => 'Something went wrong',
                 'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+
+    public function logout(Request $req)
+    {
+        try {
+            Auth::logout();
+
+            $req->session()->invalidate();
+            $req->session()->regenerateToken();
+
+            return redirect()->route('login');
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => 'Something went wrong',
+                'error' => $th->getMessage()
             ], 500);
         }
     }

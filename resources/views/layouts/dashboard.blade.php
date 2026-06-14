@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ironwork – My Dashboard</title>
+    <title>Bee Info – My Dashboard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fira+Sans:wght@400;500;600&display=swap"
         rel="stylesheet">
@@ -59,7 +59,7 @@
 
         /* SIDEBAR */
         .sidebar {
-            width: 200px;
+            width: 300px;
             min-width: 200px;
             background: var(--dark);
             border-right: 1px solid var(--border);
@@ -93,7 +93,7 @@
 
         .nav-label {
             padding: 0 14px 5px;
-            font-size: 9px;
+            font-size: 12px;
             color: var(--muted);
             letter-spacing: 1.5px;
             text-transform: uppercase
@@ -105,7 +105,7 @@
             gap: 8px;
             padding: 8px 14px;
             color: var(--muted);
-            font-size: 12px;
+            font-size: 14px;
             border-left: 3px solid transparent;
             cursor: pointer;
             text-decoration: none;
@@ -1055,15 +1055,8 @@
     <!-- SIDEBAR -->
     <aside class="sidebar">
         <div class="logo">
-            <div class="logo-title">IRONWORK</div>
+            <div class="logo-title">Bee Info</div>
             <div class="logo-sub">JOB PORTAL</div>
-        </div>
-
-        <div class="nav-section">
-            <div class="nav-label">Explore</div>
-            <a class="nav-item" href="#"><i class="ti ti-search"></i> Find Jobs</a>
-            <a class="nav-item" href="#"><i class="ti ti-barbell"></i> Top Trainers</a>
-            <a class="nav-item" href="#"><i class="ti ti-building"></i> Gym Directory</a>
         </div>
 
         <div class="nav-section">
@@ -1076,18 +1069,31 @@
         </div>
 
         <div class="nav-section">
+            <div class="nav-label">Explore</div>
+            <a class="nav-item" href="#"><i class="ti ti-search"></i> Find Jobs</a>
+            <a class="nav-item" href="#"><i class="ti ti-barbell"></i> Top Trainers</a>
+            <a class="nav-item" href="#"><i class="ti ti-building"></i> Gym Directory</a>
+        </div>
+
+        <div class="nav-section">
             <div class="nav-label">Account</div>
             <a class="nav-item" href="#"><i class="ti ti-bell"></i> Notifications <span
                     class="nav-badge">3</span></a>
             <a class="nav-item" href="#"><i class="ti ti-settings"></i> Settings</a>
-            <a class="nav-item" href="#"><i class="ti ti-logout"></i> Logout</a>
+            <a href="{{ route('logout') }}" class="nav-item"><i class="ti ti-logout"></i> Logout</a>
         </div>
 
         <div class="sidebar-foot">
-            <div class="foot-av">SC<div class="foot-dot"></div>
+            <div class="foot-av">
+                {{ collect(explode(' ', Auth::user()->name))->take(2)->map(fn($word) => strtoupper($word[0]))->implode('') }}
+                <div class="foot-dot"></div>
             </div>
             <div>
-                <div class="foot-name">Sofia Chen</div>
+                <div class="foot-name">
+                    @auth
+                        {{ Auth::user()->name }}
+                    @endauth
+                </div>
                 <div class="foot-role">Yoga Trainer</div>
             </div>
         </div>
@@ -1113,7 +1119,7 @@
             </div>
         </header>
 
-       @yield("")
+        @yield('content')
     </div><!-- /main -->
 
 </body>
