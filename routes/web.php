@@ -10,6 +10,7 @@ use App\Http\Controllers\CareerController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PricingController;
+use App\Http\Controllers\UserDashboard\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, "index"]);
@@ -28,4 +29,9 @@ Route::get("/logout", [LoginController::class, "logout"])->middleware("auth")->n
 // Admin Dashboard Routes
 Route::prefix("admin")->middleware("auth")->group(function () {
     Route::get("/dashboard", [DashboardController::class, "index"]);
+});
+
+// User Dashboard Routes
+Route::prefix("user")->middleware("auth")->group(function () {
+    Route::get("/profile", [ProfileController::class, "index"]);
 });

@@ -70,7 +70,7 @@
                                 class="position-absolute mt-2 rounded shadow-sm"
                                 style="min-width: 180px; z-index: 1050; background:#060606; border:none;">
 
-                                <a href="#profile" class="dropdown-custom-item">
+                                <a href="/user/profile" class="dropdown-custom-item">
                                     <i class="bi bi-person-circle me-2"></i> Bee Info Profile
                                 </a>
 
