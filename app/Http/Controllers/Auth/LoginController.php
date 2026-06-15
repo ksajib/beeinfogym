@@ -47,7 +47,7 @@ class LoginController extends Controller
 
             $redirect = match ($user->userType) {
                 'admin' => '/admin/dashboard',
-                default => '/user/dashboard',
+                default => '/careers',
             };
 
             return response()->json([

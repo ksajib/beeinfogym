@@ -7,12 +7,14 @@
         <!-- WELCOME HERO -->
         <div class="hero">
             <div class="hero-av-wrap">
-                <div class="hero-av">SC</div>
+                <div class="hero-av">
+                    {{ collect(explode(' ', Auth::user()->name))->take(2)->map(fn($word) => strtoupper($word[0]))->implode('') }}
+                </div>
                 <div class="hero-dot"></div>
             </div>
             <div class="hero-info">
                 <div class="hero-greeting">Welcome back,</div>
-                <div class="hero-name">SOFIA CHEN</div>
+                <div class="hero-name">{{ Auth::user()->name }}</div>
                 <div class="hero-role">Yoga &amp; Wellness Trainer &nbsp;·&nbsp; Dhaka, Bangladesh</div>
                 <div class="hero-stars">
                     <span class="stars">★★★★★</span>

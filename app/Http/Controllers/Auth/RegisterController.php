@@ -36,6 +36,7 @@ class RegisterController extends Controller
                 'phone.required' => 'Phone number is required.',
                 'phone.min' => 'Phone number must be at least 11 digits.',
                 'phone.max' => 'Phone number cannot exceed 14 digits.',
+                'phone.unique' => 'This number is already taken.',
                 'userName.required' => 'Username is required.',
                 'userName.unique' => 'This username is already taken. Please choose another one.',
             ]);

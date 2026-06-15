@@ -5,7 +5,7 @@
 
             <!-- LEFT: LOGO -->
             <div class="d-flex align-items-center">
-                <a href="index">
+                <a href="/">
                     <div class="logo-icon">
                         <img id="navbar-logo" src="{{ Vite::asset('public/images/logo-light.png') }}" alt="Logo">
                     </div>
@@ -23,11 +23,82 @@
                     <li><a href="/fitness-blog">Fitness Blog</a></li>
                     <li><a href="/careers">Careers</a></li>
                     <li><a href="/contact">Contact</a></li>
+                    @if (!Auth::check())
+                        <li><a href="/login">Login</a></li>
+                    @endif
                 </ul>
                 <!-- CTA -->
                 <a href="/contact" class="btn-primary-cta d-none d-lg-inline-flex">
                     Get Started <span class="arr">→</span>
                 </a>
+
+                {{-- Avetar --}}
+                @if (Auth::check())
+                    <div class="flex justify-center">
+                        <div x-data="{
+                            open: false,
+                            toggle() {
+                                if (this.open) {
+                                    return this.close()
+                                }
+                        
+                                this.$refs.button.focus()
+                        
+                                this.open = true
+                            },
+                            close(focusAfter) {
+                                if (!this.open) return
+                        
+                                this.open = false
+                        
+                                focusAfter && focusAfter.focus()
+                            }
+                        }" x-on:keydown.escape.prevent.stop="close($refs.button)"
+                            x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
+                            x-id="['dropdown-button']" class="relative">
+                            <!-- Button -->
+
+                            <div x-ref="button" x-on:click="toggle()" :aria-expanded="open"
+                                :aria-controls="$id('dropdown-button')" type="button" class="navbar-hero-av">
+                                {{ collect(explode(' ', Auth::user()->name))->take(2)->map(fn($word) => strtoupper($word[0]))->implode('') }}
+                            </div>
+
+
+                            <!-- Panel -->
+                            <div x-ref="panel" x-show="open" x-transition.origin.top.left
+                                x-on:click.outside="close($refs.button)" :id="$id('dropdown-button')" x-cloak
+                                class="position-absolute mt-2 rounded shadow-sm"
+                                style="min-width: 180px; z-index: 1050; background:#060606; border:none;">
+
+                                <a href="#profile" class="dropdown-custom-item">
+                                    <i class="bi bi-person-circle me-2"></i> Bee Info Profile
+                                </a>
+
+                                <a href="#saved" class="dropdown-custom-item">
+                                    <i class="bi bi-bookmark-check me-2"></i> Saved Jobs
+                                </a>
+
+                                <a href="#following" class="dropdown-custom-item">
+                                    <i class="bi bi-people me-2"></i> Following Employer
+                                </a>
+
+                                <a href="#applied" class="dropdown-custom-item">
+                                    <i class="bi bi-send-check me-2"></i> Applied Jobs
+                                </a>
+
+                                <a href="#settings" class="dropdown-custom-item">
+                                    <i class="bi bi-gear me-2"></i> Account Settings
+                                </a>
+
+                                <a href="{{ route('logout') }}" class="dropdown-custom-item text-danger">
+                                    <i class="bi bi-box-arrow-right me-2"></i> Sign Out
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                @endif
+
                 <!-- MOBILE HAMBURGER -->
                 <button class="hamburger d-lg-none" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#mobileMenu">
