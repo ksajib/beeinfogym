@@ -36,4 +36,5 @@ Route::prefix("user")->middleware("auth")->group(function () {
     Route::get("/profile", [ProfileController::class, "index"]);
     Route::post('/profile/upload-avatar', [ProfileController::class, 'uploadAvatar'])->name('profile.avatar.upload');
     Route::post("/profile/edit", [ProfileController::class, "editProfile"])->name("profile.edit");
+    Route::post("/education/storeAll", [ProfileController::class, "saveAllEducation"])->name("education.storeAll");
 });

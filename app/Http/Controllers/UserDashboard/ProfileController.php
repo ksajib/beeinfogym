@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\UserDashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Education;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
@@ -53,5 +55,70 @@ class ProfileController extends Controller
             'success' => false,
             'message' => 'No file was processed.'
         ], 400);
+    }
+
+    public function saveAllEducation(Request $req)
+    {
+        $req->validate([
+            'education' => 'required|array|min:1',
+            'education.*.institution' => 'required|string|max:255',
+            'education.*.degree' => 'required|string|max:255',
+        ]);
+
+        try {
+
+            DB::transaction(function () use ($req) {
+
+                $userId = auth()->id();
+
+                $educationRecords = array_values(
+                    $req->input('education', [])
+                );
+
+                $ids = collect($educationRecords)
+                    ->pluck('id')
+                    ->filter()
+                    ->toArray();
+
+                Education::where('user_id', $userId)
+                    ->whereNotIn('id', $ids)
+                    ->delete();
+
+                foreach ($educationRecords as $record) {
+
+                    Education::updateOrCreate(
+                        [
+                            'id' => $record['id'] ?? null,
+                            'user_id' => $userId,
+                        ],
+                        [
+                            'institution' => $record['institution'],
+                            'degree' => $record['degree'],
+                            'field' => $record['field'] ?? null,
+                            'result' => $record['result'] ?? null,
+                            'grade_system' => $record['grade_system'] ?? null,
+                            'start_date' => $record['start_date'] ?: null,
+                            'end_date' => !empty($record['is_current'])
+                                ? null
+                                : ($record['end_date'] ?: null),
+                            'is_current' => !empty($record['is_current']),
+                            'description' => $record['description'] ?? null,
+                        ]
+                    );
+                }
+            });
+
+            return back()->with(
+                'success',
+                'Education information saved successfully.'
+            );
+        } catch (\Throwable $e) {
+
+            Log::error($e->getMessage());
+
+            return back()
+                ->withInput()
+                ->with('error', $e->getMessage());
+        }
     }
 }
