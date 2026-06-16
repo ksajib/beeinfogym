@@ -15,11 +15,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     @vite(['resources/css/app.css'])
 </head>
 
 <body class="">
     <x-common.navbar />
+    <div id="toast-container"></div>
     <div class="dashboard-header-inner">
         <div class="container mt-5">
             <div class="row">
@@ -87,11 +90,34 @@
         </div>
     </div>
     <x-common.footer />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="//unpkg.com/alpinejs" defer></script>
     <script src="https://unpkg.com/feather-icons"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        function showToast(type, title, message) {
+            const container = document.getElementById("toast-container");
+
+            const toast = document.createElement("div");
+            toast.className = `toast toast-${type}`;
+
+            toast.innerHTML = `
+        <div>
+            <h4>${title}</h4>
+            <p>${message}</p>
+        </div>
+        <button onclick="this.parentElement.remove()">×</button>
+    `;
+
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+    </script>
     <script>
         AOS.init();
     </script>

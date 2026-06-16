@@ -5335,12 +5335,10 @@ footer {
     justify-content: space-between;
     align-items: flex-start;
     gap: 12px;
-    font-family: Arial, sans-serif;
-
+    font-family: var(--fira-sans);
     pointer-events: auto; /* re-enable click inside toast */
     transform: translateX(100%);
     opacity: 0;
-
     animation: slideIn 0.3s ease forwards;
 }
 
@@ -5490,3 +5488,125 @@ font-family: var(--fira-sans);
     .tab-btn.active { color: var(--black); background: var(--gold3); border-radius: 8px; }
     .tab-panel { padding: 30px; min-height: 120px; line-height: 1.6; color: var(--white); }
     .tab-panel h3 { margin-top: 0; color: #111827; }
+
+   /* Avatar Display */
+    .avatar-wrapper {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      cursor: pointer;
+    }
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #ffffff;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+      transition: filter 0.2s ease;
+    }
+    .avatar-wrapper:hover .avatar-img { filter: brightness(75%); }
+    .edit-icon-btn {
+      position: absolute;
+      bottom: 4px;
+      right: 4px;
+      background-color: #4f46e5;
+      color: white;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 3px solid #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+    .edit-icon-btn svg { width: 18px; height: 18px; fill: currentColor; }
+
+    /* Modal Framework */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .modal-backdrop.is-open { opacity: 1; pointer-events: auto; }
+    .upload-card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 460px;
+      text-align: center;
+      position: relative;
+    }
+    .close-modal-btn {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: none;
+      border: none;
+      font-size: 20px;
+      color: #9ca3af;
+      cursor: pointer;
+    }
+    .upload-card h3 { margin: 0 0 6px 0; color: #1f2937; }
+    .upload-card p { margin: 0 0 24px 0; color: #6b7280; font-size: 14px; }
+
+    /* Drag & Drop Initial States */
+    .drop-zone {
+      border: 2px dashed #cbd5e1;
+      border-radius: 14px;
+      padding: 40px 20px;
+      cursor: pointer;
+      background-color: #f8fafc;
+      transition: all 0.2s ease;
+    }
+    .drop-zone.drag-over, .img-box.drag-over {
+      border-color: #4f46e5;
+      background-color: #eef2ff !important;
+    }
+    .upload-icon { font-size: 36px; margin-bottom: 12px; display: inline-block; }
+    .drop-zone-text { font-size: 14px; color: #4b5563; font-weight: 500; }
+    .drop-zone-text span { color: #4f46e5; text-decoration: underline; }
+    #file-input { display: none; }
+
+    /* Active Crop States */
+    .crop-container {
+      margin-top: 10px;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    .img-box {
+      width: 100%;
+      max-height: 300px;
+      background-color: #f3f4f6;
+      overflow: hidden;
+      border-radius: 8px;
+      border: 2px dashed transparent; /* Ready for drag over indicators */
+      transition: border-color 0.2s, background-color 0.2s;
+    }
+    .img-box img { max-width: 100%; display: block; }
+
+    /* Round out Cropper Guide into an Avatar Shape circle */
+    .cropper-view-box, .cropper-face { border-radius: 50%; }
+
+    .action-row { display: flex; gap: 10px; width: 100%; justify-content: center; }
+    .btn { padding: 10px 18px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; }
+    .btn-primary { background: #4f46e5; color: white; }
+    .btn-primary:hover { background: #4338ca; }
+    .btn-secondary { background: #f3f4f6; color: #4b5563; }
+    .btn-secondary:hover { background: #e5e7eb; }

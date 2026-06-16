@@ -1,1 +1,4 @@
-<div>personal info</div>
+<div>
+    {{-- avater --}}
+    <x-common.avater />
+</div>

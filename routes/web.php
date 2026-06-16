@@ -34,4 +34,5 @@ Route::prefix("admin")->middleware("auth")->group(function () {
 // User Dashboard Routes
 Route::prefix("user")->middleware("auth")->group(function () {
     Route::get("/profile", [ProfileController::class, "index"]);
+    Route::post('/profile/upload-avatar', [ProfileController::class, 'uploadAvatar'])->name('profile.avatar.upload');
 });
