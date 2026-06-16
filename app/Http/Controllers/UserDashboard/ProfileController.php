@@ -4,13 +4,18 @@ namespace App\Http\Controllers\UserDashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
     public function index()
     {
-        return view("pages.UserDashboard.index");
+        $user_id = auth()->user()->id;
+
+        $profile = DB::select("SELECT * FROM profiles WHERE user_id = ?", [$user_id]);
+
+        return view("pages.UserDashboard.index", compact('profile'));
     }
 
     public function uploadAvatar(Request $request)

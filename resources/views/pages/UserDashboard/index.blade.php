@@ -26,7 +26,7 @@
 
                         <template x-if="tab.id === 'personal'">
                             <div class="nested-component-box" x-data="{ childCounter: 0 }">
-                                <x-profilepage.personal-info />
+                                <x-profilepage.personal-info :profile="$profile" />
                             </div>
                         </template>
 

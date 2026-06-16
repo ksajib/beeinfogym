@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
@@ -53,6 +54,13 @@ class RegisterController extends Controller
                 'phone' => $req->phone,
                 'userName' => $req->userName,
                 'password' => Hash::make($req->password),
+            ]);
+
+            $profile = Profile::create([
+                'user_id' => $user->id,
+                "first_name" => $user->name,
+                "email" => $user->email,
+                "primary_mobile" => $user->phone,
             ]);
 
             return response()->json([
