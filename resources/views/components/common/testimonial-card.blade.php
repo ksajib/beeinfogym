@@ -16,7 +16,7 @@
 
         <div class="tauth">
             <div class="tav">
-                <img src="{{ Vite::asset($image) }}" alt="{{ $name }}" />
+                <img src="{{ asset($image) }}" alt="{{ $name }}" />
             </div>
 
             <div>

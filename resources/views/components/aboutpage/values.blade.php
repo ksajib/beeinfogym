@@ -11,7 +11,7 @@
                 <div class="val-card-line"></div>
                 <div class="val-ghost-num">01</div>
                 <span class="feat-card-icon">
-                    <img src="{{ Vite::asset('public/images/first.png') }}" alt="Member First">
+                    <img src="{{ asset('images/first.png') }}" alt="Member First">
                 </span>
                 <div class="val-name">Member-first</div>
                 <p class="val-text">Every decision starts with one question: does this make life better for gym members
@@ -21,7 +21,7 @@
                 <div class="val-card-line"></div>
                 <div class="val-ghost-num">02</div>
                 <span class="feat-card-icon">
-                    <img src="{{ Vite::asset('public/images/build.png') }}" alt="Move Fast">
+                    <img src="{{ asset('images/build.png') }}" alt="Move Fast">
                 </span>
                 <div class="val-name">Built to move fast</div>
                 <p class="val-text">We release new features every month, driven by real feedback from gym owners. The
@@ -31,7 +31,7 @@
                 <div class="val-card-line"></div>
                 <div class="val-ghost-num">03</div>
                 <span class="feat-card-icon">
-                    <img src="{{ Vite::asset('public/images/always-there.png') }}" alt="Always There">
+                    <img src="{{ asset('images/always-there.png') }}" alt="Always There">
                 </span>
                 <div class="val-name">Always there</div>
                 <p class="val-text">Our support team works non-stop. When your gym opens at 5am, we're already awake.
@@ -41,7 +41,7 @@
                 <div class="val-card-line"></div>
                 <div class="val-ghost-num">04</div>
                 <span class="feat-card-icon">
-                    <img src="{{ Vite::asset('public/images/data-secure.png') }}" alt="Trust Security">
+                    <img src="{{ asset('images/data-secure.png') }}" alt="Trust Security">
                 </span>
                 <div class="val-name">Trust &amp; security</div>
                 <p class="val-text">Bank-grade encryption protects every member record and every transaction. Your data

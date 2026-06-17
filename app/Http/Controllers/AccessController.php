@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class AccessController extends Controller
 {
     public function index()
@@ -12,28 +10,28 @@ class AccessController extends Controller
             [
                 'number' => '01',
                 'title' => 'Extended Open Hours',
-                'image' => 'public/images/hours.png',
+                'image' => 'images/hours.png',
                 'description' => 'Make your club irresistible by staying open 24 hours. Members love the flexibility and you gain a key competitive advantage.',
                 'class' => '',
             ],
             [
                 'number' => '02',
                 'title' => 'Reduce Staffing Costs',
-                'image' => 'public/images/costs.png',
+                'image' => 'images/costs.png',
                 'description' => "Offer more value with fewer staff hours. Automation handles late-night and early-morning access so your team doesn't have to.",
                 'class' => 'd1',
             ],
             [
                 'number' => '03',
                 'title' => 'Tiered Memberships',
-                'image' => 'public/images/memberships.png',
+                'image' => 'images/memberships.png',
                 'description' => 'Offer peak vs. off-peak access tiers to maximise revenue. Charge more for all-hours access and fill every slot in your schedule.',
                 'class' => 'd2',
             ],
             [
                 'number' => '04',
                 'title' => 'Zone Restrictions',
-                'image' => 'public/images/restricted-zones.png',
+                'image' => 'images/restricted-zones.png',
                 'description' => 'Restrict access to specific areas — women-only zones, VIP areas, or staff corridors — with pinpoint precision and full audit logs.',
                 'class' => 'd3',
             ],
@@ -41,7 +39,7 @@ class AccessController extends Controller
 
         $metrics = [
             [
-                'icon' => 'public/images/staff.png',
+                'icon' => 'images/staff.png',
                 'alt' => 'Staff Required',
                 'label' => 'Staff Required',
                 'value' => '↓ Reduce Costs',
@@ -49,7 +47,7 @@ class AccessController extends Controller
                 'desc' => 'Automate late-night access — no staff needed after hours',
             ],
             [
-                'icon' => 'public/images/time.png',
+                'icon' => 'images/time.png',
                 'alt' => 'Admin Hours',
                 'label' => 'Admin Hours',
                 'value' => '↑ Save Time',
@@ -57,7 +55,7 @@ class AccessController extends Controller
                 'desc' => 'Spend hours on growth, not manual check-in management',
             ],
             [
-                'icon' => 'public/images/hardware.png',
+                'icon' => 'images/hardware.png',
                 'alt' => 'Hardware Cost',
                 'label' => 'Hardware Cost',
                 'value' => 'Low Cost',
@@ -66,7 +64,7 @@ class AccessController extends Controller
                 'desc' => 'Affordable controllers compatible with existing doors',
             ],
             [
-                'icon' => 'public/images/member-revenue.png',
+                'icon' => 'images/member-revenue.png',
                 'alt' => 'Membership Revenue',
                 'label' => 'Membership Revenue',
                 'value' => '↑ Tiered Plans',
@@ -75,9 +73,9 @@ class AccessController extends Controller
             ],
         ];
 
-        return view("pages.access", [
-            "advantages" => $advantages,
-            "metrics" => $metrics
+        return view('pages.access', [
+            'advantages' => $advantages,
+            'metrics' => $metrics,
         ]);
     }
 }

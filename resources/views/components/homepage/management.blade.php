@@ -39,7 +39,7 @@
             </div>
             <div class="col-lg-6">
                 <div class="fimg">
-                    <img data-aos="fade-left" src="{{ Vite::asset('public/images/01.png') }}" class="img-fluid mx-auto"
+                    <img data-aos="fade-left" src="{{ asset('images/01.png') }}" class="img-fluid mx-auto"
                         alt="Dashboard" />
                 </div>
             </div>

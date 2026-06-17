@@ -12,7 +12,7 @@
                             <div class="blog-card">
                                 <div class="blog-card-img-wrap">
                                     <div class="blog-card-top-bar"></div>
-                                    <img class="blog-card-img" src="{{ Vite::asset('public/images/hero01.jpg') }}"
+                                    <img class="blog-card-img" src="{{ asset('images/hero01.jpg') }}"
                                         alt="01" />
                                     <div class="blog-card-img-overlay"></div>
                                 </div>
@@ -40,7 +40,7 @@
                             <div class="blog-card">
                                 <div class="blog-card-img-wrap">
                                     <div class="blog-card-top-bar"></div>
-                                    <img class="blog-card-img" src="{{ Vite::asset('public/images/hero02.jpg') }}"
+                                    <img class="blog-card-img" src="{{ asset('images/hero02.jpg') }}"
                                         alt="02" />
                                     <div class="blog-card-img-overlay"></div>
                                 </div>
@@ -68,7 +68,7 @@
                             <div class="blog-card">
                                 <div class="blog-card-img-wrap">
                                     <div class="blog-card-top-bar"></div>
-                                    <img class="blog-card-img" src="{{ Vite::asset('public/images/hero03.jpg') }}"
+                                    <img class="blog-card-img" src="{{ asset('images/hero03.jpg') }}"
                                         alt="03" />
                                     <div class="blog-card-img-overlay"></div>
                                 </div>
@@ -96,7 +96,7 @@
                             <div class="blog-card">
                                 <div class="blog-card-img-wrap">
                                     <div class="blog-card-top-bar"></div>
-                                    <img class="blog-card-img" src="{{ Vite::asset('public/images/hero04.jpg') }}"
+                                    <img class="blog-card-img" src="{{ asset('images/hero04.jpg') }}"
                                         alt="04" />
                                     <div class="blog-card-img-overlay"></div>
                                 </div>
@@ -124,7 +124,7 @@
                             <div class="blog-card">
                                 <div class="blog-card-img-wrap">
                                     <div class="blog-card-top-bar"></div>
-                                    <img class="blog-card-img" src="{{ Vite::asset('public/images/hero05.jpg') }}"
+                                    <img class="blog-card-img" src="{{ asset('images/hero05.jpg') }}"
                                         alt="5" />
                                     <div class="blog-card-img-overlay"></div>
                                 </div>
@@ -152,7 +152,7 @@
                             <div class="blog-card">
                                 <div class="blog-card-img-wrap">
                                     <div class="blog-card-top-bar"></div>
-                                    <img class="blog-card-img" src="{{ Vite::asset('public/images/hero06.jpg') }}"
+                                    <img class="blog-card-img" src="{{ asset('images/hero06.jpg') }}"
                                         alt="06" />
                                     <div class="blog-card-img-overlay"></div>
                                 </div>
@@ -180,7 +180,7 @@
                             <div class="blog-card">
                                 <div class="blog-card-img-wrap">
                                     <div class="blog-card-top-bar"></div>
-                                    <img class="blog-card-img" src="{{ Vite::asset('public/images/hero07.jpg') }}"
+                                    <img class="blog-card-img" src="{{ asset('images/hero07.jpg') }}"
                                         alt="07" />
                                     <div class="blog-card-img-overlay"></div>
                                 </div>
@@ -208,7 +208,7 @@
                             <div class="blog-card">
                                 <div class="blog-card-img-wrap">
                                     <div class="blog-card-top-bar"></div>
-                                    <img class="blog-card-img" src="{{ Vite::asset('public/images/hero08.jpg') }}"
+                                    <img class="blog-card-img" src="{{ asset('images/hero08.jpg') }}"
                                         alt="08" />
                                     <div class="blog-card-img-overlay"></div>
                                 </div>

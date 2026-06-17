@@ -10,43 +10,43 @@
                      <div class="masonry-gallery">
 
                          <div class="masonry-item">
-                             <img src="{{ Vite::asset('public/images/gallery/01.jpg') }}" alt="01">
+                             <img src="{{ asset('images/gallery/01.jpg') }}" alt="01">
                          </div>
 
                          <div class="masonry-item">
-                             <img src="{{ Vite::asset('public/images/gallery/02.jpg') }}" alt="02">
+                             <img src="{{ asset('images/gallery/02.jpg') }}" alt="02">
                          </div>
 
                          <div class="masonry-item">
-                             <img src="{{ Vite::asset('public/images/gallery/03.jpg') }}" alt="03">
+                             <img src="{{ asset('images/gallery/03.jpg') }}" alt="03">
                          </div>
 
                          <div class="masonry-item">
-                             <img src="{{ Vite::asset('public/images/gallery/04.jpg') }}" alt="04">
+                             <img src="{{ asset('images/gallery/04.jpg') }}" alt="04">
                          </div>
 
                          <div class="masonry-item">
-                             <img src="{{ Vite::asset('public/images/gallery/05.jpg') }}" alt="05">
+                             <img src="{{ asset('images/gallery/05.jpg') }}" alt="05">
                          </div>
 
                          <div class="masonry-item">
-                             <img src="{{ Vite::asset('public/images/gallery/06.jpg') }}" alt="06">
+                             <img src="{{ asset('images/gallery/06.jpg') }}" alt="06">
                          </div>
 
                          <div class="masonry-item">
-                             <img src="{{ Vite::asset('public/images/gallery/07.jpg') }}" alt="07">
+                             <img src="{{ asset('images/gallery/07.jpg') }}" alt="07">
                          </div>
 
                          <div class="masonry-item">
-                             <img src="{{ Vite::asset('public/images/gallery/08.jpg') }}" alt="08">
+                             <img src="{{ asset('images/gallery/08.jpg') }}" alt="08">
                          </div>
 
                          <div class="masonry-item">
-                             <img src="{{ Vite::asset('public/images/gallery/09.jpg') }}" alt="09">
+                             <img src="{{ asset('images/gallery/09.jpg') }}" alt="09">
                          </div>
 
                          <div class="masonry-item">
-                             <img src="{{ Vite::asset('public/images/gallery/10.jpg') }}" alt="10">
+                             <img src="{{ asset('images/gallery/10.jpg') }}" alt="10">
                          </div>
 
                      </div>
@@ -55,52 +55,52 @@
                          <div class="carousel-inner rounded-1 overflow-hidden">
 
                              <div class="carousel-item active">
-                                 <img src="{{ Vite::asset('public/images/gallery/01.jpg') }}"
+                                 <img src="{{ asset('images/gallery/01.jpg') }}"
                                      class="d-block w-100 gallery-preview" alt="01">
                              </div>
 
                              <div class="carousel-item">
-                                 <img src="{{ Vite::asset('public/images/gallery/02.jpg') }}"
+                                 <img src="{{ asset('images/gallery/02.jpg') }}"
                                      class="d-block w-100 gallery-preview" alt="02">
                              </div>
 
                              <div class="carousel-item">
-                                 <img src="{{ Vite::asset('public/images/gallery/03.jpg') }}"
+                                 <img src="{{ asset('images/gallery/03.jpg') }}"
                                      class="d-block w-100 gallery-preview" alt="03">
                              </div>
 
                              <div class="carousel-item">
-                                 <img src="{{ Vite::asset('public/images/gallery/04.jpg') }}"
+                                 <img src="{{ asset('images/gallery/04.jpg') }}"
                                      class="d-block w-100 gallery-preview" alt="04">
                              </div>
 
                              <div class="carousel-item">
-                                 <img src="{{ Vite::asset('public/images/gallery/05.jpg') }}"
+                                 <img src="{{ asset('images/gallery/05.jpg') }}"
                                      class="d-block w-100 gallery-preview" alt="05">
                              </div>
 
                              <div class="carousel-item">
-                                 <img src="{{ Vite::asset('public/images/gallery/06.jpg') }}"
+                                 <img src="{{ asset('images/gallery/06.jpg') }}"
                                      class="d-block w-100 gallery-preview" alt="06">
                              </div>
 
                              <div class="carousel-item">
-                                 <img src="{{ Vite::asset('public/images/gallery/07.jpg') }}"
+                                 <img src="{{ asset('images/gallery/07.jpg') }}"
                                      class="d-block w-100 gallery-preview" alt="07">
                              </div>
 
                              <div class="carousel-item">
-                                 <img src="{{ Vite::asset('public/images/gallery/08.jpg') }}"
+                                 <img src="{{ asset('images/gallery/08.jpg') }}"
                                      class="d-block w-100 gallery-preview" alt="08">
                              </div>
 
                              <div class="carousel-item">
-                                 <img src="{{ Vite::asset('public/images/gallery/09.jpg') }}"
+                                 <img src="{{ asset('images/gallery/09.jpg') }}"
                                      class="d-block w-100 gallery-preview" alt="09">
                              </div>
 
                              <div class="carousel-item">
-                                 <img src="{{ Vite::asset('public/images/gallery/10.jpg') }}"
+                                 <img src="{{ asset('images/gallery/10.jpg') }}"
                                      class="d-block w-100 gallery-preview" alt="10">
                              </div>
 

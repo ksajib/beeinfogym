@@ -4,7 +4,7 @@
     <div class="metric-bar"></div>
 
     <div class="metric-icon">
-        <img src="{{ Vite::asset($metric['icon']) }}" alt="{{ $metric['alt'] }}">
+        <img src="{{ asset($metric['icon']) }}" alt="{{ $metric['alt'] }}">
     </div>
 
     <div class="metric-lbl">
