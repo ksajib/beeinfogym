@@ -44,7 +44,7 @@
 
                         <template x-if="tab.id === 'achievement'">
                             <div class="nested-component-box" x-data="settingsForm()">
-                                <x-profilepage.achievement />
+                                <x-profilepage.achievement :achivement="$achivement" />
                             </div>
                         </template>
 

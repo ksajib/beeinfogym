@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\UserDashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Achievement;
 use App\Models\Education;
 use App\Models\Experience;
 use App\Models\Training;
@@ -22,8 +23,9 @@ class ProfileController extends Controller
         $education = DB::select("SELECT * FROM educations WHERE user_id = ?", [$user_id]);
         $training = DB::select("SELECT * FROM trainings WHERE user_id = ?", [$user_id]);
         $experience = DB::select("SELECT * FROM experiences WHERE user_id = ?", [$user_id]);
+        $achivement = DB::select("SELECT * FROM achievements WHERE user_id = ?", [$user_id]);
 
-        return view("pages.UserDashboard.index",  compact('profile', 'education', "training", "experience"));
+        return view("pages.UserDashboard.index",  compact('profile', 'education', "training", "experience", "achivement"));
     }
 
     public function uploadAvatar(Request $request)
@@ -231,6 +233,54 @@ class ProfileController extends Controller
         } catch (\Throwable $e) {
 
             Log::error('Experience Save Error', [
+                'message' => $e->getMessage(),
+                'line' => $e->getLine(),
+            ]);
+
+            return back()->with('error', 'Something went wrong. Please try again.');
+        }
+    }
+
+    public function saveAllAchievement(Request $request)
+    {
+        try {
+
+            $validated = $request->validate([
+                'achievement' => 'required|array',
+
+                'achievement.*.title' => 'required|string|max:255',
+                'achievement.*.issuer' => 'nullable|string|max:255',
+                'achievement.*.date' => 'nullable|date',
+                'achievement.*.description' => 'nullable|string',
+            ]);
+
+            $userId = Auth::id();
+
+            foreach ($validated['achievement'] as $item) {
+
+                if (empty($item['title'])) {
+                    continue;
+                }
+
+                Achievement::updateOrCreate(
+                    [
+                        'id' => $item['id'] ?? null,
+                        'user_id' => $userId,
+                    ],
+                    [
+                        'user_id' => $userId,
+                        'title' => $item['title'],
+                        'issuer' => $item['issuer'] ?? null,
+                        'date' => $item['date'] ?? null,
+                        'description' => $item['description'] ?? null,
+                    ]
+                );
+            }
+
+            return back()->with('success', 'Achievements saved successfully.');
+        } catch (\Throwable $e) {
+
+            Log::error('Achievement Save Error', [
                 'message' => $e->getMessage(),
                 'line' => $e->getLine(),
             ]);
