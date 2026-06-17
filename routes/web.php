@@ -68,4 +68,6 @@ Route::prefix("user")->middleware("auth")->group(function () {
     Route::post("/profile/edit", [ProfileController::class, "editProfile"])->name("profile.edit");
     Route::post("/education/storeAll", [ProfileController::class, "saveAllEducation"])->name("education.storeAll");
     Route::post("/training/storeAll", [ProfileController::class, "saveAllTraining"])->name("training.storeAll");
+    Route::post('/experience/storeAll', [ProfileController::class, 'saveAllExperience'])
+        ->name('experience.storeAll');
 });

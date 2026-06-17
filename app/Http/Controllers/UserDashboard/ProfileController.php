@@ -4,8 +4,10 @@ namespace App\Http\Controllers\UserDashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Education;
+use App\Models\Experience;
 use App\Models\Training;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
@@ -18,8 +20,10 @@ class ProfileController extends Controller
 
         $profile = DB::select("SELECT * FROM profiles WHERE user_id = ?", [$user_id]);
         $education = DB::select("SELECT * FROM educations WHERE user_id = ?", [$user_id]);
+        $training = DB::select("SELECT * FROM trainings WHERE user_id = ?", [$user_id]);
+        $experience = DB::select("SELECT * FROM experiences WHERE user_id = ?", [$user_id]);
 
-        return view("pages.UserDashboard.index",  compact('profile', 'education'));
+        return view("pages.UserDashboard.index",  compact('profile', 'education', "training", "experience"));
     }
 
     public function uploadAvatar(Request $request)
@@ -128,7 +132,6 @@ class ProfileController extends Controller
     {
         $request->validate([
             'training' => 'required|array|min:1',
-
             'training.*.id' => 'nullable|integer',
             'training.*.training_title' => 'required|string|max:255',
             'training.*.topic' => 'nullable|string|max:255',
@@ -172,6 +175,67 @@ class ProfileController extends Controller
             DB::rollBack();
 
             return back()->with('error', $e->getMessage());
+        }
+    }
+
+    public function saveAllExperience(Request $req)
+    {
+        try {
+
+            $validated = $req->validate([
+                'experience' => 'required|array',
+
+                'experience.*.job_title' => 'required|string|max:255',
+                'experience.*.company_name' => 'required|string|max:255',
+                'experience.*.employment_type' => 'nullable|string|max:50',
+                'experience.*.location' => 'nullable|string|max:255',
+                'experience.*.start_date' => 'nullable|date',
+                'experience.*.end_date' => 'nullable|date',
+                'experience.*.is_current' => 'nullable',
+                'experience.*.description' => 'nullable|string',
+            ]);
+
+            $userId = Auth::id();
+
+            foreach ($validated['experience'] as $exp) {
+
+                if (empty($exp['job_title']) || empty($exp['company_name'])) {
+                    continue;
+                }
+
+                Experience::updateOrCreate(
+                    [
+                        'id' => $exp['id'] ?? null,
+                        'user_id' => $userId,
+                    ],
+                    [
+                        'user_id' => $userId,
+                        'job_title' => $exp['job_title'],
+                        'company_name' => $exp['company_name'],
+                        'employment_type' => $exp['employment_type'] ?? 'Full-time',
+                        'location' => $exp['location'] ?? null,
+                        'start_date' => $exp['start_date'] ?? null,
+                        'end_date' => !empty($exp['is_current'])
+                            ? null
+                            : ($exp['end_date'] ?? null),
+
+                        // FIXED BOOLEAN ISSUE
+                        'is_current' => !empty($exp['is_current']),
+
+                        'description' => $exp['description'] ?? null,
+                    ]
+                );
+            }
+
+            return back()->with('success', 'Experience saved successfully.');
+        } catch (\Throwable $e) {
+
+            Log::error('Experience Save Error', [
+                'message' => $e->getMessage(),
+                'line' => $e->getLine(),
+            ]);
+
+            return back()->with('error', 'Something went wrong. Please try again.');
         }
     }
 }

@@ -32,13 +32,13 @@
 
                         <template x-if="tab.id === 'education'">
                             <div class="nested-component-box" x-data="settingsForm()">
-                                <x-profilepage.education :education="$education" />
+                                <x-profilepage.education :education="$education" :training="$training" />
                             </div>
                         </template>
 
                         <template x-if="tab.id === 'exprience'">
                             <div class="nested-component-box" x-data="{ textInput: '' }">
-                                <x-profilepage.exprience />
+                                <x-profilepage.exprience :experience="$experience" />
                             </div>
                         </template>
 

@@ -1,5 +1,5 @@
 <div x-data="{
-    trainingList: []
+    trainingList: @js($training ?? []),
 }" class="my-4">
 
     <form action="{{ route('training.storeAll') }}" method="POST">
@@ -18,8 +18,6 @@
                 training_title: '',
                 topic: '',
                 institution_name: '',
-                start_date: '',
-                end_date: '',
                 duration: '',
                 duration_type: 'Days',
                 location: '',
