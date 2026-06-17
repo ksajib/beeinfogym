@@ -1,5 +1,5 @@
 <div x-data="{
-    educationList: @js($educationRecords ?? []),
+    educationList: @js($education ?? []),
 
     // Add a fresh form block pre-configured with your exact table schema defaults
     addEducation() {
@@ -138,8 +138,8 @@
                 </div>
             </template>
 
-            <div x-show="educationList.length > 0" x-transition class="d-flex justify-content-end mt-3 pt-3 border-top">
-                <button type="submit" class="btn btn-primary btn-sm px-4 shadow-sm" >
+            <div x-show="educationList.length > 0" x-transition class="d-flex justify-content-end mt-3 pt-3">
+                <button type="submit" class="button">
                     <i class="bi bi-cloud-arrow-up me-1"></i> Save All Education Changes
                 </button>
             </div>

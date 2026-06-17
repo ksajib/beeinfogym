@@ -4,6 +4,7 @@ namespace App\Http\Controllers\UserDashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Education;
+use App\Models\Training;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -16,8 +17,9 @@ class ProfileController extends Controller
         $user_id = auth()->user()->id;
 
         $profile = DB::select("SELECT * FROM profiles WHERE user_id = ?", [$user_id]);
+        $education = DB::select("SELECT * FROM educations WHERE user_id = ?", [$user_id]);
 
-        return view("pages.UserDashboard.index", compact('profile'));
+        return view("pages.UserDashboard.index",  compact('profile', 'education'));
     }
 
     public function uploadAvatar(Request $request)
@@ -119,6 +121,57 @@ class ProfileController extends Controller
             return back()
                 ->withInput()
                 ->with('error', $e->getMessage());
+        }
+    }
+
+    public function saveAllTraining(Request $request)
+    {
+        $request->validate([
+            'training' => 'required|array|min:1',
+
+            'training.*.id' => 'nullable|integer',
+            'training.*.training_title' => 'required|string|max:255',
+            'training.*.topic' => 'nullable|string|max:255',
+            'training.*.institution_name' => 'nullable|string|max:255',
+            'training.*.duration' => 'nullable|string|max:255',
+            'training.*.duration_type' => 'nullable|string|max:50',
+            'training.*.location' => 'nullable|string|max:255',
+            'training.*.description' => 'nullable|string',
+        ]);
+
+        DB::beginTransaction();
+
+        try {
+            $userId = auth()->id();
+
+            $records = array_values($request->training);
+
+            foreach ($records as $row) {
+                Training::updateOrCreate(
+                    [
+                        'id' => $row['id'] ?? null,
+                        'user_id' => $userId,
+                    ],
+                    [
+                        'user_id' => $userId,
+                        'training_title' => $row['training_title'],
+                        'topic' => $row['topic'] ?? null,
+                        'institution_name' => $row['institution_name'] ?? null,
+                        'duration' => $row['duration'] ?? null,
+                        'duration_type' => $row['duration_type'] ?? null,
+                        'location' => $row['location'] ?? null,
+                        'description' => $row['description'] ?? null,
+                    ]
+                );
+            }
+
+            DB::commit();
+
+            return back()->with('success', 'Training saved successfully!');
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            return back()->with('error', $e->getMessage());
         }
     }
 }

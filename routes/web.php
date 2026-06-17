@@ -10,6 +10,7 @@ use App\Http\Controllers\CareerController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PricingController;
+use App\Http\Controllers\PrivacyController;
 use App\Http\Controllers\UserDashboard\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,7 @@ Route::get("/gym-access-control", [AccessController::class, "index"]);
 Route::get("/contact", [ContactController::class, "index"]);
 Route::get("/pricing", [PricingController::class, "index"]);
 Route::get("/fitness-blog", [BlogController::class, "index"]);
+Route::get("/privacy-policy", [PrivacyController::class, "index"]);
 Route::get("/careers", [CareerController::class, "index"])->middleware("auth");
 Route::get("/register", [RegisterController::class, "index"]);
 Route::post("/register", [RegisterController::class, "store"]);
@@ -37,4 +39,5 @@ Route::prefix("user")->middleware("auth")->group(function () {
     Route::post('/profile/upload-avatar', [ProfileController::class, 'uploadAvatar'])->name('profile.avatar.upload');
     Route::post("/profile/edit", [ProfileController::class, "editProfile"])->name("profile.edit");
     Route::post("/education/storeAll", [ProfileController::class, "saveAllEducation"])->name("education.storeAll");
+    Route::post("/training/storeAll", [ProfileController::class, "saveAllTraining"])->name("training.storeAll");
 });
