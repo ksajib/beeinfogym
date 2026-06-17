@@ -22,9 +22,9 @@
 
 <body>
     <!-- ── PRELOADER ── -->
-    <div id="loader">
+    {{-- <div id="loader">
         <div class="icon"></div>
-    </div>
+    </div> --}}
 
     <!-- ── BACK TO TOP ── -->
     <button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
