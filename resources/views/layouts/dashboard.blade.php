@@ -1062,7 +1062,7 @@
         <div class="nav-section">
             <div class="nav-label">My Profile</div>
             <a class="nav-item active" href="#"><i class="ti ti-layout-dashboard"></i> My Dashboard</a>
-            <a class="nav-item" href="#"><i class="ti ti-file-text"></i> My Applications <span
+            <a class="nav-item" href="/admin/post-jobs"><i class="ti ti-file-text"></i> Post Jobs <span
                     class="nav-badge">3</span></a>
             <a class="nav-item" href="#"><i class="ti ti-bookmark"></i> Saved Jobs</a>
             <a class="nav-item" href="#"><i class="ti ti-file-cv"></i> My Resume</a>

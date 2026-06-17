@@ -59,6 +59,7 @@ Route::get("/logout", [LoginController::class, "logout"])->middleware("auth")->n
 // Admin Dashboard Routes
 Route::prefix("admin")->middleware("auth")->group(function () {
     Route::get("/dashboard", [DashboardController::class, "index"]);
+    Route::get("/admin/post-jobs", []);
 });
 
 // User Dashboard Routes
