@@ -108,7 +108,7 @@
                                     all BeeInfo systems within 3–5 business days. This action is irreversible.</p>
                             </div>
                             <div class="flex-shrink-0">
-                                <a href="data-deletion-request.html#deletion" class="btn-danger-cta">Submit Request
+                                <a href="/data-deletion-request" class="btn-danger-cta">Submit Request
                                     <span class="arr">→</span></a>
                             </div>
                         </div>
