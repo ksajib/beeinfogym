@@ -1,0 +1,76 @@
+name: Build production assets
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-update-deploy-branch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build assets
+        run: npm run build
+
+      - name: Prepare deploy payload
+        run: |
+          mkdir -p /tmp/deploy-source
+          rsync -a \
+            --delete \
+            --exclude='.git' \
+            --exclude='node_modules' \
+            ./ /tmp/deploy-source/
+
+      - name: Publish to production-build
+        env:
+          DEPLOY_BRANCH: production-build
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+          if git ls-remote --exit-code --heads origin "${DEPLOY_BRANCH}" > /dev/null 2>&1; then
+            git worktree add -B "${DEPLOY_BRANCH}" /tmp/deploy-branch "origin/${DEPLOY_BRANCH}"
+          else
+            git worktree add --detach /tmp/deploy-branch
+            cd /tmp/deploy-branch
+            git switch --orphan "${DEPLOY_BRANCH}"
+            find . -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
+            printf '# Deploy branch\n' > README.md
+            git add README.md
+            git commit -m 'Initialize production-build branch'
+            git push origin "${DEPLOY_BRANCH}"
+          fi
+
+          rsync -a --delete \
+            --exclude='.git' \
+            /tmp/deploy-source/ /tmp/deploy-branch/
+
+          cd /tmp/deploy-branch
+          git add -A
+
+          if git diff --cached --quiet; then
+            echo 'No deploy changes to commit'
+            exit 0
+          fi
+
+          git commit -m "Build assets from ${GITHUB_SHA}"
+          git push origin "${DEPLOY_BRANCH}"
