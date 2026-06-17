@@ -60,7 +60,9 @@ jobs:
             git push origin "${DEPLOY_BRANCH}"
           fi
 
-          rsync -a --delete \
+          rm -rf /tmp/deploy-branch/public/build
+
+          rsync -a --checksum --delete \
             --exclude='.git' \
             /tmp/deploy-source/ /tmp/deploy-branch/
 
