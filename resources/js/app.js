@@ -44,14 +44,20 @@ window.addEventListener("load", function () {
 const navbar = document.getElementById("navbar");
 const logo = document.getElementById("navbar-logo");
 
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 50) {
-    navbar.classList.add("active");
-    logo.src = "{{ Vite::asset('public/images/logo-light.png') }}";
-  } else {
-    navbar.classList.remove("active");
-  }
-});
+if (navbar && logo) {
+  const defaultLogoSrc = logo.dataset.defaultSrc || logo.src;
+  const scrolledLogoSrc = logo.dataset.scrolledSrc || defaultLogoSrc;
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+      navbar.classList.add("active");
+      logo.src = scrolledLogoSrc;
+    } else {
+      navbar.classList.remove("active");
+      logo.src = defaultLogoSrc;
+    }
+  });
+}
 
 /* == FEATHER ICONS == */
   feather.replace();
@@ -171,5 +177,4 @@ document.addEventListener('DOMContentLoaded', function() {
 /* == BACK TO TOP == */
   const btt = document.getElementById('back-to-top');
   window.addEventListener('scroll', () => btt.classList.toggle('show', window.scrollY > 550));
-
 

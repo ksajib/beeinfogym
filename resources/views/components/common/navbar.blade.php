@@ -7,7 +7,9 @@
             <div class="d-flex align-items-center">
                 <a href="/">
                     <div class="logo-icon">
-                        <img id="navbar-logo" src="{{ asset('images/logo-light.png') }}" alt="Logo">
+                        <img id="navbar-logo" src="{{ asset('images/logo-light.png') }}"
+                            data-default-src="{{ asset('images/logo-light.png') }}"
+                            data-scrolled-src="{{ asset('images/logo-light.png') }}" alt="Logo">
                     </div>
                 </a>
             </div>
