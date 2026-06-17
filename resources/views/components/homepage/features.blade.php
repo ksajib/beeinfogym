@@ -12,7 +12,7 @@
             <!-- ── HERO FEATURE CARD ── -->
             <div class="feat-hero-card">
                 <div class="feat-hero-bg">01</div>
-                <div class="feat-hero-em"><img src="{{ Vite::asset('public/images/portal.png') }}" alt="Portal"></div>
+                <div class="feat-hero-em"><img src="{{ asset('images/portal.png') }}" alt="Portal"></div>
                 <div class="feat-hero-body">
                     <div class="feat-hero-tag">Core Feature</div>
                     <div class="feat-hero-ttl">Member portal</div>
@@ -29,7 +29,7 @@
                 <div class="feat-card-glow"></div>
                 <div class="feat-card-bar"></div>
                 <div class="feat-card-num">02</div>
-                <span class="feat-card-icon"><img src="{{ Vite::asset('public/images/auto-billing.png') }}"
+                <span class="feat-card-icon"><img src="{{ asset('images/auto-billing.png') }}"
                         alt="Auto Billing"></span>
                 <div class="feat-card-ttl">Auto billing</div>
                 <p class="feat-card-desc">
@@ -42,7 +42,7 @@
                 <div class="feat-card-glow"></div>
                 <div class="feat-card-bar"></div>
                 <div class="feat-card-num">03</div>
-                <span class="feat-card-icon"><img src="{{ Vite::asset('public/images/booking-system.png') }}"
+                <span class="feat-card-icon"><img src="{{ asset('images/booking-system.png') }}"
                         alt="Booking System"></span>
                 <div class="feat-card-ttl">Booking system</div>
                 <p class="feat-card-desc">
@@ -56,7 +56,7 @@
                 <div class="feat-mini">
                     <div class="feat-mini-dot"></div>
                     <div class="feat-mini-bar"></div>
-                    <span class="feat-card-icon"><img src="{{ Vite::asset('public/images/live-analytics.png') }}"
+                    <span class="feat-card-icon"><img src="{{ asset('images/live-analytics.png') }}"
                             alt="Live Analytics"></span>
                     <div class="feat-mini-ttl">Live analytics</div>
                     <p class="feat-mini-desc">
@@ -67,7 +67,7 @@
                 <div class="feat-mini">
                     <div class="feat-mini-dot"></div>
                     <div class="feat-mini-bar"></div>
-                    <span class="feat-card-icon"><img src="{{ Vite::asset('public/images/mobile-app.png') }}"
+                    <span class="feat-card-icon"><img src="{{ asset('images/mobile-app.png') }}"
                             alt="Mobile App"></span>
                     <div class="feat-mini-ttl">Mobile app</div>
                     <p class="feat-mini-desc">
@@ -78,7 +78,7 @@
                 <div class="feat-mini d2">
                     <div class="feat-mini-dot"></div>
                     <div class="feat-mini-bar"></div>
-                    <span class="feat-card-icon"><img src="{{ Vite::asset('public/images/ai-marketing.png') }}"
+                    <span class="feat-card-icon"><img src="{{ asset('images/ai-marketing.png') }}"
                             alt="AI Marketing"></span>
                     <div class="feat-mini-ttl">AI marketing</div>
                     <p class="feat-mini-desc">

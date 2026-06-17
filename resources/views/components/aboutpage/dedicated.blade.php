@@ -4,7 +4,7 @@
             <div class="col-lg-6 rvl">
                 <div class="custom-img-stack">
                     <div class="fimg custom-img-main">
-                        <img data-aos="fade-right" src="{{ Vite::asset('public/images/04.png') }}" src="assets/images/04.png" alt="Dedicated Support" class="img-fluid" />
+                        <img data-aos="fade-right" src="{{ asset('images/04.png') }}" src="assets/images/04.png" alt="Dedicated Support" class="img-fluid" />
                         <div class="custom-img-main-ov"></div>
                     </div>
                     <div class="img-accent">

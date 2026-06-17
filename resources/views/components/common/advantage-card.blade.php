@@ -9,7 +9,7 @@
         </div>
 
         <span class="adv-icon">
-            <img src="{{ Vite::asset($image) }}" alt="{{ $title }}">
+            <img src="{{ asset($image) }}" alt="{{ $title }}">
         </span>
 
         <h5>{{ $title }}</h5>

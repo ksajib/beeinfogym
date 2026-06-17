@@ -24,7 +24,7 @@
                 <div class="feat-pill">
                     <div class="feat-pill-bar"></div>
                     <span class="feat-pill-icon">
-                        <img src="{{ Vite::asset('public/images/intelligent.png') }}" alt="Intelligent">
+                        <img src="{{ asset('images/intelligent.png') }}" alt="Intelligent">
                     </span>
                     <h5 class="text-light">Intelligent</h5>
                     <p>Updates in real time and works even when the internet goes down by backing up your database
@@ -35,7 +35,7 @@
                 <div class="feat-pill">
                     <div class="feat-pill-bar"></div>
                     <span class="feat-pill-icon">
-                        <img src="{{ Vite::asset('public/images/integration.png') }}" alt="Integration">
+                        <img src="{{ asset('images/integration.png') }}" alt="Integration">
                     </span>
                     <h5 class="text-light">Seamless Integration</h5>
                     <p>Fully connected to your membership system, automatically revoking access for failed payments or
@@ -46,7 +46,7 @@
                 <div class="feat-pill">
                     <div class="feat-pill-bar"></div>
                     <span class="feat-pill-icon">
-                        <img src="{{ Vite::asset('public/images/dependable.png') }}" alt="Dependable">
+                        <img src="{{ asset('images/dependable.png') }}" alt="Dependable">
                     </span>
                     <h5 class="text-light">Dependable</h5>
                     <p>Securely manage your gym doors 24/7 without needing staff present at the front desk. Run your

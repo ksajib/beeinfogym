@@ -28,7 +28,7 @@
             </div>
             <div class="col-lg-6">
                 <div class="fimg sc-img-wrap">
-                    <img data-aos="fade-left" src="{{ Vite::asset('public/images/05.png') }}" src="assets/images/05.png"
+                    <img data-aos="fade-left" src="{{ asset('images/05.png') }}" src="assets/images/05.png"
                         alt="Scalable Solutions" class="img-fluid" />
                 </div>
             </div>

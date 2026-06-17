@@ -34,7 +34,7 @@
                     <div class="trust-big-num">110+</div>
                     <div class="trust-badge b1">
                         <div class="trust-badge-icon">
-                            <img src="{{ Vite::asset('public/images/trophy.png') }}" alt="Trophy">
+                            <img src="{{ asset('images/trophy.png') }}" alt="Trophy">
                         </div>
                         <div class="trust-badge-text">
                             <strong>✓1</strong>
@@ -43,7 +43,7 @@
                     </div>
                     <div class="trust-badge b2">
                         <div class="trust-badge-icon">
-                            <img src="{{ Vite::asset('public/images/smart-access-control.png') }}"
+                            <img src="{{ asset('images/smart-access-control.png') }}"
                                 alt="Smart Access Control">
                         </div>
                         <div class="trust-badge-text">

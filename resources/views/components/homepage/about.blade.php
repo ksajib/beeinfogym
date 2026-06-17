@@ -4,7 +4,7 @@
              <div class="col-lg-6">
                  <div class="about-imgs">
                      <div class="fimg about-img-main">
-                         <img data-aos="fade-left" src="{{ Vite::asset('public/images/03.png') }}" alt="Team"
+                         <img data-aos="fade-left" src="{{ asset('images/03.png') }}" alt="Team"
                              class="mx-auto" />
                      </div>
                      <div class="about-circle">
@@ -31,7 +31,7 @@
                  <div class="row g-3 mt-2">
                      <div class="col-12 col-md-6">
                          <div class="aval">
-                             <div class="aval-icon"><img src="{{ Vite::asset('public/images/first.png') }}"
+                             <div class="aval-icon"><img src="{{ asset('images/first.png') }}"
                                      alt="Mission First"></div>
                              <div class="aval-ttl">Mission first</div>
                              <div class="aval-txt">
@@ -42,7 +42,7 @@
                      </div>
                      <div class="col-12 col-md-6">
                          <div class="aval">
-                             <div class="aval-icon"><img src="{{ Vite::asset('public/images/always-there.png') }}"
+                             <div class="aval-icon"><img src="{{ asset('images/always-there.png') }}"
                                      alt="Always There"></div>
                              <div class="aval-ttl">Always There</div>
                              <div class="aval-txt">
@@ -53,7 +53,7 @@
                      </div>
                      <div class="col-12 col-md-6">
                          <div class="aval">
-                             <div class="aval-icon"><img src="{{ Vite::asset('public/images/always-growing.png') }}"
+                             <div class="aval-icon"><img src="{{ asset('images/always-growing.png') }}"
                                      alt="Always Growing">
                              </div>
                              <div class="aval-ttl">Always Growing</div>
@@ -65,7 +65,7 @@
                      </div>
                      <div class="col-12 col-md-6">
                          <div class="aval">
-                             <div class="aval-icon"><img src="{{ Vite::asset('public/images/data-secure.png') }}"
+                             <div class="aval-icon"><img src="{{ asset('images/data-secure.png') }}"
                                      alt="Data Secure"></div>
                              <div class="aval-ttl">Data Secure</div>
                              <div class="aval-txt">

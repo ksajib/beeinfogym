@@ -9,7 +9,7 @@
                 <a href="terms.html" class="related-card">
                     <div class="related-card-line"></div>
                     <div class="related-icon">
-                        <img src="{{ Vite::asset('public/images/policy-privacy.png') }}" alt="Terms">
+                        <img src="{{ asset('images/policy-privacy.png') }}" alt="Terms">
                     </div>
                     <h5>Terms &amp; Conditions</h5>
                     <p>Understand your rights and responsibilities as a BeeInfo user, including payment terms, account
@@ -21,7 +21,7 @@
                 <a href="refund-return.html" class="related-card">
                     <div class="related-card-line"></div>
                     <div class="related-icon">
-                        <img src="{{ Vite::asset('public/images/refund.png') }}" alt="Return and Refund">
+                        <img src="{{ asset('images/refund.png') }}" alt="Return and Refund">
                     </div>
                     <h5>Return &amp; Refund</h5>
                     <p>Understand our refund eligibility conditions, timelines, and the process for requesting a service
@@ -33,7 +33,7 @@
                 <a href="data-deletion-request.html" class="related-card">
                     <div class="related-card-line"></div>
                     <div class="related-icon">
-                        <img src="{{ Vite::asset('public/images/delete.png') }}" alt="Delete">
+                        <img src="{{ asset('images/delete.png') }}" alt="Delete">
                     </div>
                     <h5>Data Deletion Request</h5>
                     <p>Submit a formal request to permanently delete your personal data, biometric records, and account

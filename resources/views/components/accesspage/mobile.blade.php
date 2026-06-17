@@ -4,7 +4,7 @@
 
             <div class="col-lg-6">
                 <div class="fimg">
-                    <img data-aos="fade-right" src="{{ Vite::asset('public/images/08.png') }}" src="assets/images/08.png"
+                    <img data-aos="fade-right" src="{{ asset('images/08.png') }}" src="assets/images/08.png"
                         class="img-fluid mx-auto" alt="Mobile Access Control" />
                 </div>
             </div>

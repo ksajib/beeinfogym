@@ -31,7 +31,7 @@
                                         <div class="hf-lbl">Active Gyms</div>
                                     </div>
                                 </div>
-                                <img src="{{ Vite::asset('public/images/header.png') }}" class="hero-image" alt="Hero">
+                                <img src="{{ asset('images/header.png') }}" class="hero-image" alt="Hero">
                             </div>
                         </div>
                     </div>

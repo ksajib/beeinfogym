@@ -3,7 +3,7 @@
         <div class="row g-5 align-items-center">
             <div class="col-lg-6">
                 <div class="fimg">
-                    <img data-aos="fade-right" src="{{ Vite::asset('public/images/02.png') }}" alt="Dashboard"
+                    <img data-aos="fade-right" src="{{ asset('images/02.png') }}" alt="Dashboard"
                         class="img-fluid mx-auto" />
                 </div>
             </div>
