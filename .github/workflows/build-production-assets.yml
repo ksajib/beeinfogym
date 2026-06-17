@@ -53,7 +53,7 @@ jobs:
             git worktree add --detach /tmp/deploy-branch
             cd /tmp/deploy-branch
             git switch --orphan "${DEPLOY_BRANCH}"
-            find . -mindepth 1 -maxdepth 1 -exec rm -rf {} +
+            find . -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
             printf '# Deploy branch\n' > README.md
             git add README.md
             git commit -m 'Initialize production-build branch'
