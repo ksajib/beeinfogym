@@ -10,26 +10,30 @@
                     <p class="sub">Provide accurate information so we can locate and process your deletion request
                         safely.</p>
 
-                    <form>
+                    <form action="{{ route('delete-account') }}" method="POST">
+                        @csrf
                         <div class="row g-4">
                             <div class="col-md-12">
                                 <label class="form-label">Unique ID (UID)<span
                                         style="color:var(--accent)">*</span></label>
-                                <input type="text" class="form-control custom-input" placeholder="Enter your UID">
+                                <input type="text" name="uid" class="form-control custom-input"
+                                    placeholder="Enter your UID">
                             </div>
                             <div class="col-md-12">
                                 <label class="form-label">Email Address<span
                                         style="color:var(--accent)">*</span></label>
-                                <input type="email" class="form-control custom-input" placeholder="john@example.com">
+                                <input type="email" name="email" class="form-control custom-input"
+                                    placeholder="john@example.com">
                             </div>
                             <div class="col-md-12">
                                 <label class="form-label">Phone Number<span style="color:var(--accent)">*</span></label>
-                                <input type="text" class="form-control custom-input" placeholder="+880 1XXX XXXXXX">
+                                <input type="text" name="mobile" class="form-control custom-input"
+                                    placeholder="+880 1XXX XXXXXX">
                             </div>
                             <div class="col-md-12">
                                 <label class="form-label">Reason for Deletion<span
                                         style="color:var(--accent)">*</span></label>
-                                <textarea rows="6" class="form-control custom-input custom-textarea"
+                                <textarea rows="6" name="reason" class="form-control custom-input custom-textarea"
                                     placeholder="Please tell us why you want to delete your account ..."></textarea>
                             </div>
                             <div class="col-lg-12">

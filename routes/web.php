@@ -13,7 +13,32 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PricingController;
 use App\Http\Controllers\PrivacyController;
 use App\Http\Controllers\UserDashboard\ProfileController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
+
+// Clear Cache
+Route::get('/clear_cache', function () {
+    Artisan::call('cache:clear');
+    return '<h1>Cache cleared</h1>';
+});
+
+// Clear Config
+Route::get('/clear_config', function () {
+    Artisan::call('config:clear');
+    return '<h1>Config cleared</h1>';
+});
+
+// Clear Route Cache
+Route::get('/route_clear', function () {
+    Artisan::call('route:clear');
+    return '<h1>Route cache cleared</h1>';
+});
+
+// Clear View Cache
+Route::get('/view_clear', function () {
+    Artisan::call('view:clear');
+    return '<h1>View cache cleared</h1>';
+});
 
 Route::get('/', [HomeController::class, "index"]);
 Route::get("/about", [AboutController::class, "index"]);
@@ -23,6 +48,7 @@ Route::get("/pricing", [PricingController::class, "index"]);
 Route::get("/fitness-blog", [BlogController::class, "index"]);
 Route::get("/privacy-policy", [PrivacyController::class, "index"]);
 Route::get("/data-deletion-request", [DeletionController::class, "index"]);
+Route::post('delete-account', [DeletionController::class, 'deleteAccount'])->name('delete-account')->middleware('throttle:3,1');
 Route::get("/careers", [CareerController::class, "index"])->middleware("auth");
 Route::get("/register", [RegisterController::class, "index"]);
 Route::post("/register", [RegisterController::class, "store"]);
