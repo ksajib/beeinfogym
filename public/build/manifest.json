@@ -1,0 +1,34 @@
+{
+  "public/images/header-inner.png": {
+    "file": "assets/header-inner-CZSHsNCF.png",
+    "src": "public/images/header-inner.png"
+  },
+  "public/images/hero-blog.jpg": {
+    "file": "assets/hero-blog-tUNr6QXF.jpg",
+    "src": "public/images/hero-blog.jpg"
+  },
+  "public/images/loader.gif": {
+    "file": "assets/loader-DtnJaEQw.gif",
+    "src": "public/images/loader.gif"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-Dnzl5_G-.css",
+    "name": "app",
+    "names": [
+      "app.css"
+    ],
+    "src": "resources/css/app.css",
+    "isEntry": true,
+    "assets": [
+      "assets/loader-DtnJaEQw.gif",
+      "assets/hero-blog-tUNr6QXF.jpg",
+      "assets/header-inner-CZSHsNCF.png"
+    ]
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-Ch8QhERk.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  }
+}
