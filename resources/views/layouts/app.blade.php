@@ -26,6 +26,10 @@
         <div class="icon"></div>
     </div> --}}
 
+    <div id="preloader">
+        <img src="{{ asset('images/favicon.svg') }}" alt="Loading" class="loader-logo">
+    </div>
+
     <!-- ── BACK TO TOP ── -->
     <button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
         <i class="bi bi-arrow-up"></i>
@@ -39,6 +43,7 @@
     <x-common.footer />
     <x-common.cookies />
 
+    <script src="https://unpkg.com/lottie-web/build/player/lottie.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="//unpkg.com/alpinejs" defer></script>
     <script src="https://unpkg.com/feather-icons"></script>
@@ -182,6 +187,13 @@
                 dismissBanner('declined');
             });
         })();
+    </script>
+    <script>
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('preloader').style.display = 'none';
+            }, 2000); // 2000ms = 2 seconds
+        });
     </script>
     <script>
         function showToast(type, title, message) {

@@ -9,6 +9,6 @@ class PostJobController extends Controller
 {
     public function index()
     {
-        return view("");
+        return view("pages.AdminDashboard.post-job");
     }
 }

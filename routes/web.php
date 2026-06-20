@@ -3,6 +3,8 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AccessController;
 use App\Http\Controllers\AdminDashboard\DashboardController;
+use App\Http\Controllers\AdminDashboard\PostJobController;
+use App\Http\Controllers\AdminDashboard\SkillController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BlogController;
@@ -59,7 +61,8 @@ Route::get("/logout", [LoginController::class, "logout"])->middleware("auth")->n
 // Admin Dashboard Routes
 Route::prefix("admin")->middleware("auth")->group(function () {
     Route::get("/dashboard", [DashboardController::class, "index"]);
-    Route::get("/admin/post-jobs", []);
+    Route::get("/post-jobs", [PostJobController::class, "index"]);
+    Route::get("/skill", [SkillController::class, "index"]);
 });
 
 // User Dashboard Routes
