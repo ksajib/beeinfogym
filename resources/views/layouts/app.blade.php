@@ -26,10 +26,6 @@
         <div class="icon"></div>
     </div> --}}
 
-    <div id="preloader">
-        <img src="{{ asset('images/favicon.svg') }}" alt="Loading" class="loader-logo">
-    </div>
-
     <!-- ── BACK TO TOP ── -->
     <button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
         <i class="bi bi-arrow-up"></i>
