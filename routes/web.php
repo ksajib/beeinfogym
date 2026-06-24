@@ -15,6 +15,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PricingController;
 use App\Http\Controllers\PrivacyController;
 use App\Http\Controllers\UserDashboard\ProfileController;
+use App\Http\Controllers\UserDashboard\ResumeController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
@@ -74,4 +75,5 @@ Route::prefix("user")->middleware("auth")->group(function () {
     Route::post("/training/storeAll", [ProfileController::class, "saveAllTraining"])->name("training.storeAll");
     Route::post('/experience/storeAll', [ProfileController::class, 'saveAllExperience'])->name('experience.storeAll');
     Route::post('/achivement/storeAll', [ProfileController::class, 'saveAllAchievement'])->name('achievement.storeAll');
+    Route::get('/resume/{id}/download', [ResumeController::class, 'download']);
 });

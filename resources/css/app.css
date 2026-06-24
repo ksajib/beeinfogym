@@ -52,6 +52,11 @@ section {
     z-index: 9999;
 }
 
+.color-accent{
+  background-color: var(--accent);
+  color: var(--white) !important;
+}
+
 .loader-logo {
     width: 120px;
     height: 120px;

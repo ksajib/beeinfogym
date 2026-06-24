@@ -2,9 +2,32 @@
 @section('content')
     <div>
         <div class="card card-black text-light p-3">
-            <h4 class="text-bebas">Bee Info Jobs Profile</h4>
-            <p class="text-fira fs-6 text-muted">Update your BeeInfo profile anytime. Stay ready for the next opportunity.
-            </p>
+
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+
+                <!-- Left Side Text -->
+                <div>
+                    <h4 class="text-bebas mb-1">Bee Info Jobs Profile</h4>
+                    <p class="text-fira fs-6 text-muted mb-0">
+                        Update your BeeInfo profile anytime. Stay ready for the next opportunity.
+                    </p>
+                </div>
+
+                <!-- Right Side Buttons -->
+                <div class="d-flex gap-2">
+
+                    <a href="#" class="btn btn-outline-light btn-sm">
+                        <i class="bi bi-eye me-1"></i> CV Preview
+                    </a>
+
+                    <a href="{{ url('/user/resume/' . auth()->id() . '/download') }}" class="btn color-accent btn-sm">
+                        <i class="bi bi-download me-1"></i> CV Download
+                    </a>
+
+                </div>
+
+            </div>
+
         </div>
 
         <div class="tab-component mt-4" x-data="tabComponent('personal')" @go-to-tab.window="activeTab = $event.detail">
