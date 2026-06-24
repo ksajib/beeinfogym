@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Achievement;
 use App\Models\Education;
 use App\Models\Experience;
+use App\Models\Profile;
 use App\Models\Training;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -53,6 +54,10 @@ class ProfileController extends Controller
                 'profile_image' => $fileName,
             ]);
 
+            $user->profile()->update([
+                'image_url' => $fileName,
+            ]);
+
             return response()->json([
                 'success' => true,
                 'image_url' => asset('storage/avatars/' . $fileName)
@@ -63,6 +68,48 @@ class ProfileController extends Controller
             'success' => false,
             'message' => 'No file was processed.'
         ], 400);
+    }
+
+    public function editProfile(Request $req)
+    {
+        try {
+
+            DB::transaction(function () use ($req) {
+
+                $userId = auth()->id();
+
+                Profile::updateOrCreate(
+                    [
+                        'user_id' => $userId
+                    ],
+                    [
+                        'first_name' => $req->first_name,
+                        'last_name' => $req->last_name,
+                        'fathers_name' => $req->fathers_name,
+                        'mothers_name' => $req->mothers_name,
+                        'dob' => $req->dob,
+                        'gender' => $req->gender,
+                        'religion' => $req->religion,
+                        'marital_status' => $req->marital_status,
+                        'nationality' => $req->nationality,
+                        'nid' => $req->nid,
+                        'passport_no' => $req->passport_no,
+                        'passport_issue_date' => $req->passport_issue_date,
+                        'primary_mobile' => $req->primary_mobile,
+                        'secondary_mobile' => $req->secondary_mobile,
+                        'email' => $req->email,
+                        'alternate_email' => $req->alternate_email,
+                        'bio' => $req->bio,
+                        'address' => $req->address,
+                    ]
+                );
+            });
+
+            return redirect()->back()->with('success', 'Profile updated successfully.');
+        } catch (\Throwable $th) {
+
+            return redirect()->back()->with('error', $th->getMessage());
+        }
     }
 
     public function saveAllEducation(Request $req)

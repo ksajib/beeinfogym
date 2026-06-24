@@ -249,6 +249,13 @@
                         value="{{ old('alternate_email', $profile[0]->alternate_email) }}">
                 </div>
 
+                <div class="col-md-12">
+                    <label class="form-label">Bio</label>
+                    <textarea  style="height: 200px;" rows="10" type="text" name="bio" class="formControl"
+                        value="{{ old('bio', $profile[0]->bio) }}">
+                    </textarea>
+                </div>
+
             </div>
 
             <div class="d-flex justify-content-end gap-2 mt-4">

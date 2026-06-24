@@ -13,7 +13,7 @@ class ResumeController extends Controller
     {
         $user = User::with(['profile', 'educations', 'trainings', 'experiences', 'achievements'])->findOrFail($id);
 
-        $pdf = PDF::loadView('resume.pdf', compact('user'));
+        $pdf = PDF::loadView('resume.pdf2', compact('user'));
 
         return $pdf->download($user->name . '_resume.pdf');
     }

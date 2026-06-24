@@ -168,9 +168,9 @@
             <tr>
                 <td class="sidebar">
                     <div class="profile-photo-container">
-                        @if ($user->profile && $user->profile->profile_photo)
-                            <img src="{{ public_path('storage/' . $user->profile->profile_photo) }}" class="profile-photo"
-                                alt="Profile Photo">
+                        @if ($user->profile && $user->profile->image_url)
+                            <img src="{{ public_path('storage/avatars/' . $user->profile->image_url) }}"
+                                class="profile-photo" alt="Profile Photo">
                         @else
                             <div
                                 style="width: 140px; height: 140px; border-radius: 50%; background: #4a5568; margin: 0 auto; line-height: 140px; text-align: center; color: #fff;">
