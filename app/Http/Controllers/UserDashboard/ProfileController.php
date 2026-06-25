@@ -8,6 +8,7 @@ use App\Models\Education;
 use App\Models\Experience;
 use App\Models\Profile;
 use App\Models\Training;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -25,8 +26,9 @@ class ProfileController extends Controller
         $training = DB::select("SELECT * FROM trainings WHERE user_id = ?", [$user_id]);
         $experience = DB::select("SELECT * FROM experiences WHERE user_id = ?", [$user_id]);
         $achivement = DB::select("SELECT * FROM achievements WHERE user_id = ?", [$user_id]);
+        $user = User::with(['profile', 'educations', 'trainings', 'experiences', 'achievements'])->findOrFail($user_id);
 
-        return view("pages.UserDashboard.index",  compact('profile', 'education', "training", "experience", "achivement"));
+        return view("pages.UserDashboard.index",  compact('profile', 'education', "training", "experience", "achivement", "user"));
     }
 
     public function uploadAvatar(Request $request)

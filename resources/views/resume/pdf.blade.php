@@ -10,7 +10,7 @@
             font-size: 12px;
             line-height: 1.5;
             color: #222222;
-            margin: 35px;
+            margin: 13px 35px;
         }
 
         .header {

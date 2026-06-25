@@ -23,7 +23,6 @@
     <div x-show="!isEditing" x-transition>
 
         <div class="row g-4">
-
             <div class="col-md-6">
                 <label class="small text-muted d-block mb-1">
                     First Name
@@ -251,7 +250,7 @@
 
                 <div class="col-md-12">
                     <label class="form-label">Bio</label>
-                    <textarea  style="height: 200px;" rows="10" type="text" name="bio" class="formControl"
+                    <textarea style="height: 200px;" rows="10" type="text" name="bio" class="formControl"
                         value="{{ old('bio', $profile[0]->bio) }}">
                     </textarea>
                 </div>
