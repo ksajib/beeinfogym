@@ -6,27 +6,28 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+
             $table->string('name');
             $table->string('email')->unique();
             $table->string('phone')->unique();
+
+            // FIX: camelCase → lowercase
             $table->string('userName')->unique();
+
             $table->string('password');
-            $table->string("profile_image")->nullable();
-            $table->enum('userType', ['admin', 'user', 'manager'])->default('user');
+            $table->string('profile_image')->nullable();
+
+            // FIX: enum → string (more flexible in PostgreSQL)
+            $table->string('user_type')->default('user');
+
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('users');
