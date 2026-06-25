@@ -72,50 +72,54 @@
                                         </button>
                                     </div>
 
-                                    <!-- BODY (SCROLL ADDED HERE) -->
+                                    <!-- BODY -->
                                     <div class="modal-body" style="max-height: 75vh; overflow-y: auto;">
 
-                                        <!-- Switcher -->
+                                        <!-- SWITCH -->
                                         <div class="d-flex gap-2 mb-4">
                                             <button class="btn"
-                                                :class="template === 'template1' ? 'btn-primary' : 'btn-outline-light'"
+                                                :class="template === 'template1' ? 'btn-primary-cta' : 'btn-outline-light'"
                                                 @click="template = 'template1'">
                                                 Template 1
                                             </button>
 
                                             <button class="btn"
-                                                :class="template === 'template2' ? 'btn-primary' : 'btn-outline-light'"
+                                                :class="template === 'template2' ? 'btn-primary-cta' : 'btn-outline-light'"
                                                 @click="template = 'template2'">
                                                 Template 2
                                             </button>
                                         </div>
 
-                                        <div style="height: 75vh; overflow-y: auto; padding-right: 10px;">
+                                        <!-- TEMPLATE 1 -->
+                                        <div x-show="template === 'template1'" x-cloak x-transition.opacity
+                                            style="background:white; color:black;">
 
-                                            <!-- Template 1 -->
-                                            <div x-show="template === 'template1'" x-cloak x-transition.opacity>
-
-                                                @include('resume.pdf', ['user' => $user])
-
-                                            </div>
-
-                                            <!-- Template 2 -->
-                                            <div x-show="template === 'template2'" x-cloak x-transition.opacity>
-
-                                                @include('resume.pdf3', ['user' => $user])
-
-                                            </div>
+                                            @include('resume.pdf', ['user' => $user])
 
                                         </div>
 
-                                    </div>
+                                        <!-- TEMPLATE 2 -->
+                                        <div x-show="template === 'template2'" x-cloak x-transition.opacity>
 
+                                            @include('resume.pdf3', ['user' => $user])
+
+                                        </div>
+
+                                        <!-- DOWNLOAD (SAME SCOPE!) -->
+                                        <div class="mt-3">
+                                            <a :href="`{{ url('/user/resume/' . auth()->id() . '/download') }}?template=${template}`"
+                                                class="btn btn-success">
+                                                <i class="bi bi-download me-1"></i> Download CV
+                                            </a>
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <a href="{{ url('/user/resume/' . auth()->id() . '/download') }}" class="btn color-accent btn-sm">
+                    <a href="{{ url('/user/resume/' . auth()->id() . '/download') }}" class="btn btn-primary-cta btn-sm">
                         <i class="bi bi-download me-1"></i> CV Download
                     </a>
 

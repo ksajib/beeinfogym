@@ -9,6 +9,7 @@
             font-family: 'Georgia', 'Times New Roman', serif;
             font-size: 12px;
             line-height: 1.5;
+            background: white !important;
             color: #222222;
             margin: 13px 35px;
         }
