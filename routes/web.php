@@ -3,6 +3,8 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AccessController;
 use App\Http\Controllers\AdminDashboard\DashboardController;
+use App\Http\Controllers\AdminDashboard\PostJobController;
+use App\Http\Controllers\AdminDashboard\SkillController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BlogController;
@@ -13,6 +15,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PricingController;
 use App\Http\Controllers\PrivacyController;
 use App\Http\Controllers\UserDashboard\ProfileController;
+use App\Http\Controllers\UserDashboard\ResumeController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
@@ -59,16 +62,18 @@ Route::get("/logout", [LoginController::class, "logout"])->middleware("auth")->n
 // Admin Dashboard Routes
 Route::prefix("admin")->middleware("auth")->group(function () {
     Route::get("/dashboard", [DashboardController::class, "index"]);
-    Route::get("/admin/post-jobs", []);
+    Route::get("/post-jobs", [PostJobController::class, "index"]);
+    Route::get("/skill", [SkillController::class, "index"]);
 });
 
 // User Dashboard Routes
 Route::prefix("user")->middleware("auth")->group(function () {
     Route::get("/profile", [ProfileController::class, "index"]);
     Route::post('/profile/upload-avatar', [ProfileController::class, 'uploadAvatar'])->name('profile.avatar.upload');
-    Route::post("/profile/edit", [ProfileController::class, "editProfile"])->name("profile.edit");
+    Route::patch("/profile/edit", [ProfileController::class, "editProfile"])->name("profile.edit");
     Route::post("/education/storeAll", [ProfileController::class, "saveAllEducation"])->name("education.storeAll");
     Route::post("/training/storeAll", [ProfileController::class, "saveAllTraining"])->name("training.storeAll");
     Route::post('/experience/storeAll', [ProfileController::class, 'saveAllExperience'])->name('experience.storeAll');
     Route::post('/achivement/storeAll', [ProfileController::class, 'saveAllAchievement'])->name('achievement.storeAll');
+    Route::get('/resume/{id}/download', [ResumeController::class, 'download']);
 });

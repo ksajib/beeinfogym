@@ -23,7 +23,7 @@
                     <li><a href="/gym-access-control">Access Control</a></li>
                     <li><a href="/pricing">Pricing</a></li>
                     <li><a href="/fitness-blog">Fitness Blog</a></li>
-                    {{-- <li><a href="/careers">Careers</a></li> --}}
+                    <li><a href="/careers">Careers</a></li>
                     <li><a href="/contact">Contact</a></li>
                     @if (!Auth::check())
                         <li><a href="/login">Login</a></li>
@@ -43,16 +43,16 @@
                                 if (this.open) {
                                     return this.close()
                                 }
-
+                        
                                 this.$refs.button.focus()
-
+                        
                                 this.open = true
                             },
                             close(focusAfter) {
                                 if (!this.open) return
-
+                        
                                 this.open = false
-
+                        
                                 focusAfter && focusAfter.focus()
                             }
                         }" x-on:keydown.escape.prevent.stop="close($refs.button)"

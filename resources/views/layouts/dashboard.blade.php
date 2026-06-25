@@ -9,6 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fira+Sans:wght@400;500;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
     <style>
         * {
             box-sizing: border-box;
@@ -40,6 +44,12 @@
             display: flex;
             height: 100vh;
             overflow: hidden
+        }
+
+        .modal-backdrop.show {
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            background: rgba(0, 0, 0, 0.4);
         }
 
         /* SCROLLBAR */
@@ -1064,7 +1074,7 @@
             <a class="nav-item active" href="#"><i class="ti ti-layout-dashboard"></i> My Dashboard</a>
             <a class="nav-item" href="/admin/post-jobs"><i class="ti ti-file-text"></i> Post Jobs <span
                     class="nav-badge">3</span></a>
-            <a class="nav-item" href="#"><i class="ti ti-bookmark"></i> Saved Jobs</a>
+            <a class="nav-item" href="/admin/skill"><i class="ti ti-bulb"></i> Skill</a>
             <a class="nav-item" href="#"><i class="ti ti-file-cv"></i> My Resume</a>
         </div>
 
@@ -1121,7 +1131,10 @@
 
         @yield('content')
     </div><!-- /main -->
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <script src="//unpkg.com/alpinejs" defer></script>
 </body>
 
 </html>
