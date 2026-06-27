@@ -28,6 +28,7 @@ class ProfileController extends Controller
         $achivement = DB::select("SELECT * FROM achievements WHERE user_id = ?", [$user_id]);
         $user = User::with(['profile', 'educations', 'trainings', 'experiences', 'achievements'])->findOrFail($user_id);
 
+        // return ($profile);
         return view("pages.UserDashboard.index",  compact('profile', 'education', "training", "experience", "achivement", "user"));
     }
 
@@ -56,8 +57,11 @@ class ProfileController extends Controller
                 'profile_image' => $fileName,
             ]);
 
-            $user->profile()->update([
+            $profile = $user->profile;
+
+            $profile->update([
                 'image_url' => $fileName,
+                'profile_complete' => $profile->profile_complete + 5,
             ]);
 
             return response()->json([
@@ -80,10 +84,31 @@ class ProfileController extends Controller
 
                 $userId = auth()->id();
 
-                Profile::updateOrCreate(
-                    [
-                        'user_id' => $userId
-                    ],
+                // 18 fields (completion base)
+                $fields = [
+                    'first_name',
+                    'last_name',
+                    'fathers_name',
+                    'mothers_name',
+                    'dob',
+                    'gender',
+                    'religion',
+                    'marital_status',
+                    'nationality',
+                    'nid',
+                    'passport_no',
+                    'passport_issue_date',
+                    'primary_mobile',
+                    'secondary_mobile',
+                    'email',
+                    'alternate_email',
+                    'bio',
+
+                ];
+
+                // 1️⃣ Save / Update Profile
+                $profile = Profile::updateOrCreate(
+                    ['user_id' => $userId],
                     [
                         'first_name' => $req->first_name,
                         'last_name' => $req->last_name,
@@ -97,20 +122,39 @@ class ProfileController extends Controller
                         'nid' => $req->nid,
                         'passport_no' => $req->passport_no,
                         'passport_issue_date' => $req->passport_issue_date,
-                        'primary_mobile' => $req->primary_mobile,
+                        'primary_mobile' => $req->secondary_mobile,
                         'secondary_mobile' => $req->secondary_mobile,
-                        'email' => $req->email,
+                        'email' => $req->alternate_email,
                         'alternate_email' => $req->alternate_email,
                         'bio' => $req->bio,
                         'address' => $req->address,
                     ]
                 );
+
+                // 2️⃣ Count filled fields
+                $filled = 0;
+
+                foreach ($fields as $field) {
+                    if (!empty($profile->$field)) {
+                        $filled++;
+                    }
+                }
+
+                // 3️⃣ Scale to 30 points
+                $totalFields = count($fields); // 18
+                $pointsPerField = 30 / $totalFields;
+
+                $progress = round($filled * $pointsPerField);
+
+                // 4️⃣ Save final progress
+                $profile->update([
+                    'profile_complete' => $progress
+                ]);
             });
 
-            return redirect()->back()->with('success', 'Profile updated successfully.');
+            return back()->with('success', 'Profile updated successfully.');
         } catch (\Throwable $th) {
-
-            return redirect()->back()->with('error', $th->getMessage());
+            return back()->with('error', $th->getMessage());
         }
     }
 
