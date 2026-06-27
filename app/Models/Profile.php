@@ -30,6 +30,7 @@ class Profile extends Model
         'profile_photo',
         'bio',
         'address',
+        'profile_complete'
     ];
 
     protected $casts = [

@@ -211,6 +211,10 @@ section {
   transform: translateX(6px);
 }
 
+.font-sans{
+  font-family: var(--fira-sans);
+}
+
 .btn-primary-cta {
   position: relative;
   display: inline-flex;
