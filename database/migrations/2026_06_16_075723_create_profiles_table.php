@@ -46,6 +46,7 @@ return new class extends Migration
             $table->text('bio')->nullable();
             $table->json('address')->nullable();
             $table->string('image_url')->nullable();
+            $table->integer('profile_complete')->default(0);
             $table->text('bio')->nullable();
 
             $table->timestamps();
