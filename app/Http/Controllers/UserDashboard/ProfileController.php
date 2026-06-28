@@ -21,59 +21,92 @@ class ProfileController extends Controller
     {
         $user_id = auth()->user()->id;
 
-        $profile = DB::select("SELECT * FROM profiles WHERE user_id = ?", [$user_id]);
-        $education = DB::select("SELECT * FROM educations WHERE user_id = ?", [$user_id]);
-        $training = DB::select("SELECT * FROM trainings WHERE user_id = ?", [$user_id]);
-        $experience = DB::select("SELECT * FROM experiences WHERE user_id = ?", [$user_id]);
-        $achivement = DB::select("SELECT * FROM achievements WHERE user_id = ?", [$user_id]);
         $user = User::with(['profile', 'educations', 'trainings', 'experiences', 'achievements'])->findOrFail($user_id);
 
-        // return ($profile);
-        return view("pages.UserDashboard.index",  compact('profile', 'education', "training", "experience", "achivement", "user"));
+        $score = 0;
+
+        if ($user->profile && !empty($user->profile->profile_photo)) {
+            $score += 5;
+        }
+
+        $fields = [
+            'first_name',
+            'last_name',
+            'fathers_name',
+            'mothers_name',
+            'dob',
+            'gender',
+            'religion',
+            'marital_status',
+            'nationality',
+            'nid',
+            'passport_no',
+            'passport_issue_date',
+            'primary_mobile',
+            'secondary_mobile',
+            'email',
+            'alternate_email',
+            'bio',
+            'address',
+        ];
+
+        $filled = 0;
+        $total = count($fields);
+
+        foreach ($fields as $field) {
+            if (!empty($user->profile->$field)) {
+                $filled++;
+            }
+        }
+
+        $score = $score + round(($filled / $total) * 30);
+
+        if (count($user->educations) >= 1) {
+            $score += 10;
+        }
+
+        if (count($user->trainings) >= 1) {
+            $score += 20;
+        }
+
+        if (count($user->experiences) >= 1) {
+            $score += 20;
+        }
+
+        if (count($user->achievements) >= 1) {
+            $score += 15;
+        }
+
+        return view("pages.UserDashboard.index",  compact("user", 'score'));
     }
+
+
 
     public function uploadAvatar(Request $request)
     {
-        // 1. Validate the file
         $request->validate([
             'profile_image' => 'required|image|mimes:jpeg,jpg,png|max:2048',
         ]);
 
-        if ($request->hasFile('profile_image')) {
-            $user = auth()->user();
-            $file = $request->file('profile_image');
+        $user = auth()->user();
 
-            // Clean up the old file if it exists
-            if ($user->profile_image) {
-                Storage::disk('public')->delete('avatars/' . $user->profile_image);
-            }
+        $file = $request->file('profile_image');
 
-            // Store the file and get the unique generated name (e.g., "AbC123xyz.jpg")
-            $fileName = $file->hashName();
-            $file->storeAs('avatars', $fileName, 'public');
+        $fileName = $file->hashName();
+        $file->storeAs('avatars', $fileName, 'public');
 
-            // Save just the unique filename string to your existing column
-            $user->update([
-                'profile_image' => $fileName,
-            ]);
 
-            $profile = $user->profile;
 
-            $profile->update([
-                'image_url' => $fileName,
-                'profile_complete' => $profile->profile_complete + 5,
-            ]);
-
-            return response()->json([
-                'success' => true,
-                'image_url' => asset('storage/avatars/' . $fileName)
-            ]);
-        }
+        // Create or update profile safely
+        $profile = Profile::updateOrCreate(
+            ['user_id' => $user->id],
+            ['profile_photo' => $fileName]
+        );
 
         return response()->json([
-            'success' => false,
-            'message' => 'No file was processed.'
-        ], 400);
+            'success' => true,
+            'image_url' => asset('storage/avatars/' . $fileName)
+        ]);
     }
 
     public function editProfile(Request $req)
@@ -84,29 +117,6 @@ class ProfileController extends Controller
 
                 $userId = auth()->id();
 
-                // 18 fields (completion base)
-                $fields = [
-                    'first_name',
-                    'last_name',
-                    'fathers_name',
-                    'mothers_name',
-                    'dob',
-                    'gender',
-                    'religion',
-                    'marital_status',
-                    'nationality',
-                    'nid',
-                    'passport_no',
-                    'passport_issue_date',
-                    'primary_mobile',
-                    'secondary_mobile',
-                    'email',
-                    'alternate_email',
-                    'bio',
-
-                ];
-
-                // 1️⃣ Save / Update Profile
                 $profile = Profile::updateOrCreate(
                     ['user_id' => $userId],
                     [
@@ -122,34 +132,12 @@ class ProfileController extends Controller
                         'nid' => $req->nid,
                         'passport_no' => $req->passport_no,
                         'passport_issue_date' => $req->passport_issue_date,
-                        'primary_mobile' => $req->secondary_mobile,
                         'secondary_mobile' => $req->secondary_mobile,
-                        'email' => $req->alternate_email,
                         'alternate_email' => $req->alternate_email,
                         'bio' => $req->bio,
                         'address' => $req->address,
                     ]
                 );
-
-                // 2️⃣ Count filled fields
-                $filled = 0;
-
-                foreach ($fields as $field) {
-                    if (!empty($profile->$field)) {
-                        $filled++;
-                    }
-                }
-
-                // 3️⃣ Scale to 30 points
-                $totalFields = count($fields); // 18
-                $pointsPerField = 30 / $totalFields;
-
-                $progress = round($filled * $pointsPerField);
-
-                // 4️⃣ Save final progress
-                $profile->update([
-                    'profile_complete' => $progress
-                ]);
             });
 
             return back()->with('success', 'Profile updated successfully.');
@@ -181,10 +169,12 @@ class ProfileController extends Controller
                     ->filter()
                     ->toArray();
 
+                // delete removed records
                 Education::where('user_id', $userId)
                     ->whereNotIn('id', $ids)
                     ->delete();
 
+                // save/update education
                 foreach ($educationRecords as $record) {
 
                     Education::updateOrCreate(
@@ -209,10 +199,7 @@ class ProfileController extends Controller
                 }
             });
 
-            return back()->with(
-                'success',
-                'Education information saved successfully.'
-            );
+            return back()->with('success', 'Education information saved successfully.');
         } catch (\Throwable $e) {
 
             Log::error($e->getMessage());
