@@ -45,8 +45,9 @@
 
                                 <span class="text-muted me-2">Profile Visibility</span>
 
-                                <span class="d-flex align-items-center gap-1 px-3 py-1 rounded-pill bg-success fw-semibold">
-                                    Public <i class="fa-solid fa-globe"></i>
+                                <span
+                                    class="d-flex align-items-center gap-1 px-3 py-1 rounded-pill bg-success fw-semibold text-uppercase">
+                                    {{ $user->profile->profile_visibility }} <i class="fa-solid fa-globe"></i>
                                 </span>
 
                             </div>
@@ -58,8 +59,9 @@
                                     Immediately Availability Status
                                 </span>
 
-                                <span class="d-flex align-items-center gap-1 px-3 py-1 rounded-pill bg-success fw-semibold">
-                                    Yes
+                                <span
+                                    class="d-flex align-items-center gap-1 px-3 py-1 rounded-pill bg-success fw-semibold text-uppercase">
+                                    {{ $user->profile->profile_availability }}
                                 </span>
 
                             </div>
@@ -91,15 +93,15 @@
                             <!-- Background -->
                             <path stroke="#2f2f2f" stroke-width="3" fill="none"
                                 d="M18 2.0845
-                                                                                                                                                                           a 15.9155 15.9155 0 0 1 0 31.831
-                                                                                                                                                                           a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                                                                                                                                                                                   a 15.9155 15.9155 0 0 1 0 31.831
+                                                                                                                                                                                                   a 15.9155 15.9155 0 0 1 0 -31.831" />
 
                             <!-- Animated Progress -->
                             <path stroke="#e6b000" stroke-width="3" stroke-linecap="round" fill="none"
                                 :stroke-dasharray="`${progress},100`" style="transition:stroke-dasharray 1.5s ease-in-out;"
                                 d="M18 2.0845
-                                                                                                                                                                           a 15.9155 15.9155 0 0 1 0 31.831
-                                                                                                                                                                           a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                                                                                                                                                                                   a 15.9155 15.9155 0 0 1 0 31.831
+                                                                                                                                                                                                   a 15.9155 15.9155 0 0 1 0 -31.831" />
                         </svg>
 
                         <div class="position-absolute fw-bold text-fira" style="font-size:.9rem;color:#e6b000;">

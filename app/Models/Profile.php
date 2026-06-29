@@ -28,6 +28,8 @@ class Profile extends Model
         'email',
         'alternate_email',
         'profile_photo',
+        'profile_visibility',
+        'profile_availability',
         'bio',
         'address',
     ];

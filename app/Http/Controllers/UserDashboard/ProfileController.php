@@ -368,4 +368,52 @@ class ProfileController extends Controller
             return back()->with('error', 'Something went wrong. Please try again.');
         }
     }
+
+    public function updateVisibility(Request $request)
+    {
+        try {
+            $userId = auth()->id();
+
+            Profile::where('user_id', $userId)
+                ->update([
+                    'profile_visibility' => $request->visibility
+                ]);
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Visibility updated successfully',
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
+
+    public function updateAvailability(Request $request)
+    {
+        try {
+            $request->validate([
+                'availability' => 'required|in:yes,no',
+            ]);
+
+            $userId = auth()->id();
+
+            Profile::where('user_id', $userId)
+                ->update([
+                    'profile_availability' => $request->availability
+                ]);
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Availability updated successfully',
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
 }
