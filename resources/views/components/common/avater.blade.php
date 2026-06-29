@@ -4,7 +4,7 @@
     </style> --}}
     <div class="avatar-wrapper" id="open-modal-trigger">
         <img class="avatar-img" id="main-profile-avatar"
-            src="{{ auth()->user()->profile_image ? asset('storage/avatars/' . auth()->user()->profile_image) : 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400' }}"
+            src="{{ $profile->profile_photo ? asset('storage/avatars/' . $profile->profile_photo) : 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400' }}"
             alt="Avatar">
         <div class="edit-icon-btn">
             <svg viewBox="0 0 24 24">
