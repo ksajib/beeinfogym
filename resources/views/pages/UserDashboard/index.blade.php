@@ -26,11 +26,53 @@
 
     <div>
         <div class="card card-black text-light p-4 mb-3">
-            <div>
-                <h4 class="text-bebas mb-1">Bee Info Jobs Profile</h4>
-                <p class="text-fira fs-6 text-muted mb-0">
-                    Update your BeeInfo profile anytime. Stay ready for the next opportunity.
-                </p>
+            <div class="d-flex">
+                <div class="w-100">
+
+                    <!-- Header Row -->
+                    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+
+                        <!-- Title -->
+                        <h4 class="mb-0 text-white fw-semibold font-sans">
+                            Bee Info Jobs Profile
+                        </h4>
+
+                        <!-- Status Badge -->
+                        <div class="d-flex align-items-center gap-2">
+
+                            <div onclick="window.location='{{ url('/user/settings/resume-privacy') }}'"
+                                class="d-flex font-sans align-items-center px-2 py-1 rounded-pill border border-secondary bg-dark text-white small">
+
+                                <span class="text-muted me-2">Profile Visibility</span>
+
+                                <span class="d-flex align-items-center gap-1 px-3 py-1 rounded-pill bg-success fw-semibold">
+                                    Public <i class="fa-solid fa-globe"></i>
+                                </span>
+
+                            </div>
+
+                            <div onclick="window.location='{{ url('/user/settings/resume-privacy') }}'"
+                                class="d-flex font-sans align-items-center px-2 py-1 rounded-pill border border-secondary bg-dark text-white small">
+
+                                <span class="text-muted me-2">
+                                    Immediately Availability Status
+                                </span>
+
+                                <span class="d-flex align-items-center gap-1 px-3 py-1 rounded-pill bg-success fw-semibold">
+                                    Yes
+                                </span>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Description -->
+                    <p class="text-secondary fs-6 mb-0 mt-2 font-sans">
+                        Update your BeeInfo profile anytime. Stay ready for the next opportunity.
+                    </p>
+
+                </div>
             </div>
         </div>
 
@@ -49,15 +91,15 @@
                             <!-- Background -->
                             <path stroke="#2f2f2f" stroke-width="3" fill="none"
                                 d="M18 2.0845
-                                                                                                   a 15.9155 15.9155 0 0 1 0 31.831
-                                                                                                   a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                                                                                                                                                           a 15.9155 15.9155 0 0 1 0 31.831
+                                                                                                                                                                           a 15.9155 15.9155 0 0 1 0 -31.831" />
 
                             <!-- Animated Progress -->
                             <path stroke="#e6b000" stroke-width="3" stroke-linecap="round" fill="none"
                                 :stroke-dasharray="`${progress},100`" style="transition:stroke-dasharray 1.5s ease-in-out;"
                                 d="M18 2.0845
-                                                                                                   a 15.9155 15.9155 0 0 1 0 31.831
-                                                                                                   a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                                                                                                                                                           a 15.9155 15.9155 0 0 1 0 31.831
+                                                                                                                                                                           a 15.9155 15.9155 0 0 1 0 -31.831" />
                         </svg>
 
                         <div class="position-absolute fw-bold text-fira" style="font-size:.9rem;color:#e6b000;">
@@ -216,7 +258,7 @@
 
                         <template x-if="tab.id === 'education'">
                             <div class="nested-component-box" x-data="settingsForm()">
-                                <x-profilepage.education :education="$user->educations" :training="$user->training" />
+                                <x-profilepage.education :education="$user->educations" :training="$user->trainings" />
                             </div>
                         </template>
 

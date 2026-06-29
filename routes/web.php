@@ -76,4 +76,5 @@ Route::prefix("user")->middleware("auth")->group(function () {
     Route::post('/experience/storeAll', [ProfileController::class, 'saveAllExperience'])->name('experience.storeAll');
     Route::post('/achivement/storeAll', [ProfileController::class, 'saveAllAchievement'])->name('achievement.storeAll');
     Route::get('/resume/{id}/download', [ResumeController::class, 'download']);
+    Route::get('/settings/resume-privacy', [ResumeController::class, 'profilePreference']);
 });

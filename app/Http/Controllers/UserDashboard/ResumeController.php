@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class ResumeController extends Controller
 {
-    public function download($id, Request $request,)
+    public function download($id, Request $request)
     {
         $user = User::with(['profile', 'educations', 'trainings', 'experiences', 'achievements'])->findOrFail($id);
 
@@ -22,5 +22,10 @@ class ResumeController extends Controller
         }
 
         return $pdf->download($user->name . '_resume.pdf');
+    }
+
+    public function profilePreference()
+    {
+        return view('pages.UserDashboard.profilePreference');
     }
 }
