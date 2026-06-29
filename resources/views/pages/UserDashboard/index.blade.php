@@ -26,11 +26,55 @@
 
     <div>
         <div class="card card-black text-light p-4 mb-3">
-            <div>
-                <h4 class="text-bebas mb-1">Bee Info Jobs Profile</h4>
-                <p class="text-fira fs-6 text-muted mb-0">
-                    Update your BeeInfo profile anytime. Stay ready for the next opportunity.
-                </p>
+            <div class="d-flex">
+                <div class="w-100">
+
+                    <!-- Header Row -->
+                    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+
+                        <!-- Title -->
+                        <h4 class="mb-0 text-white fw-semibold font-sans">
+                            Bee Info Jobs Profile
+                        </h4>
+
+                        <!-- Status Badge -->
+                        <div class="d-flex align-items-center gap-2">
+
+                            <div onclick="window.location='{{ url('/user/settings/resume-privacy') }}'"
+                                class="d-flex font-sans align-items-center px-2 py-1 rounded-pill border border-secondary bg-dark text-white small">
+
+                                <span class="text-muted me-2">Profile Visibility</span>
+
+                                <span
+                                    class="d-flex align-items-center gap-1 px-3 py-1 rounded-pill bg-success fw-semibold text-uppercase">
+                                    {{ $user->profile->profile_visibility }} <i class="fa-solid fa-globe"></i>
+                                </span>
+
+                            </div>
+
+                            <div onclick="window.location='{{ url('/user/settings/resume-privacy') }}'"
+                                class="d-flex font-sans align-items-center px-2 py-1 rounded-pill border border-secondary bg-dark text-white small">
+
+                                <span class="text-muted me-2">
+                                    Immediately Availability Status
+                                </span>
+
+                                <span
+                                    class="d-flex align-items-center gap-1 px-3 py-1 rounded-pill bg-success fw-semibold text-uppercase">
+                                    {{ $user->profile->profile_availability }}
+                                </span>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Description -->
+                    <p class="text-secondary fs-6 mb-0 mt-2 font-sans">
+                        Update your BeeInfo profile anytime. Stay ready for the next opportunity.
+                    </p>
+
+                </div>
             </div>
         </div>
 
@@ -39,7 +83,7 @@
 
 
                 <!-- Profile Progress -->
-                <div x-data="{ progress: 0 }" x-init="setTimeout(() => progress = {{ $user->profile->profile_complete ?? 0 }}, 200)" class="d-flex align-items-center gap-3">
+                <div x-data="{ progress: 0 }" x-init="setTimeout(() => progress = {{ $score ?? 0 }}, 200)" class="d-flex align-items-center gap-3">
 
                     <div class="position-relative d-flex align-items-center justify-content-center"
                         style="width:70px;height:70px;">
@@ -47,16 +91,17 @@
                         <svg class="w-100 h-100" viewBox="0 0 36 36" style="transform:rotate(-90deg);">
 
                             <!-- Background -->
-                            <path stroke="#2f2f2f" stroke-width="3" fill="none" d="M18 2.0845
-                                               a 15.9155 15.9155 0 0 1 0 31.831
-                                               a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path stroke="#2f2f2f" stroke-width="3" fill="none"
+                                d="M18 2.0845
+                                                                                                                                                                                                   a 15.9155 15.9155 0 0 1 0 31.831
+                                                                                                                                                                                                   a 15.9155 15.9155 0 0 1 0 -31.831" />
 
                             <!-- Animated Progress -->
                             <path stroke="#e6b000" stroke-width="3" stroke-linecap="round" fill="none"
                                 :stroke-dasharray="`${progress},100`" style="transition:stroke-dasharray 1.5s ease-in-out;"
                                 d="M18 2.0845
-                                               a 15.9155 15.9155 0 0 1 0 31.831
-                                               a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                                                                                                                                                                                   a 15.9155 15.9155 0 0 1 0 31.831
+                                                                                                                                                                                                   a 15.9155 15.9155 0 0 1 0 -31.831" />
                         </svg>
 
                         <div class="position-absolute fw-bold text-fira" style="font-size:.9rem;color:#e6b000;">
@@ -66,9 +111,9 @@
                     </div>
 
                     <div>
-                        <h6 class="mb-0 text-white font-sans font-fira">Profile Progress</h6>
+                        <h6 class="mb-0 text-white font-sans font-fira">We've built a resume based on your profile</h6>
                         <small class="text-muted font-sans">
-                            Keep filling information to reach 100%
+                            Last Update Date: {{ $user->profile->updated_at->format('d M Y') }}
                         </small>
                     </div>
 
@@ -209,25 +254,25 @@
 
                         <template x-if="tab.id === 'personal'">
                             <div class="nested-component-box" x-data="{ childCounter: 0 }">
-                                <x-profilepage.personal-info :profile="$profile" />
+                                <x-profilepage.personal-info :profile="$user->profile" />
                             </div>
                         </template>
 
                         <template x-if="tab.id === 'education'">
                             <div class="nested-component-box" x-data="settingsForm()">
-                                <x-profilepage.education :education="$education" :training="$training" />
+                                <x-profilepage.education :education="$user->educations" :training="$user->trainings" />
                             </div>
                         </template>
 
                         <template x-if="tab.id === 'exprience'">
                             <div class="nested-component-box" x-data="{ textInput: '' }">
-                                <x-profilepage.exprience :experience="$experience" />
+                                <x-profilepage.exprience :experience="$user->experiences" />
                             </div>
                         </template>
 
                         <template x-if="tab.id === 'achievement'">
                             <div class="nested-component-box" x-data="settingsForm()">
-                                <x-profilepage.achievement :achivement="$achivement" />
+                                <x-profilepage.achievement :achivement="$user->achivements" />
                             </div>
                         </template>
 

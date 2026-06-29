@@ -76,4 +76,7 @@ Route::prefix("user")->middleware("auth")->group(function () {
     Route::post('/experience/storeAll', [ProfileController::class, 'saveAllExperience'])->name('experience.storeAll');
     Route::post('/achivement/storeAll', [ProfileController::class, 'saveAllAchievement'])->name('achievement.storeAll');
     Route::get('/resume/{id}/download', [ResumeController::class, 'download']);
+    Route::get('/settings/resume-privacy', [ResumeController::class, 'profilePreference']);
+    Route::post('/profile/visibility', [ProfileController::class, 'updateVisibility'])->name('profile.visibility.update');
+    Route::post('/profile/availability', [ProfileController::class, 'updateAvailability'])->name('profile.availability.update');
 });

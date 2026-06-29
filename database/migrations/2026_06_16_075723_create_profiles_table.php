@@ -45,9 +45,8 @@ return new class extends Migration
             $table->string('profile_photo')->nullable();
             $table->text('bio')->nullable();
             $table->json('address')->nullable();
-            $table->string('image_url')->nullable();
-            $table->integer('profile_complete')->default(0);
-            $table->text('bio')->nullable();
+            $table->string('profile_visibility')->default('public');
+            $table->string('profile_availability')->default('yes');
 
             $table->timestamps();
         });
