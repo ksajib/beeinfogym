@@ -2,171 +2,176 @@
 
 @section('content')
     <div class="main-content app-content mt-0">
+
         <div class="side-app">
             <div class="main-container container-fluid mt-5">
-                <!-- HEADER -->
+
+                {{-- HEADER --}}
                 <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h4 class="mb-0">
-                        <i class="ti ti-brain"></i> Skill Management
+                    <h4 class="text-white fw-bold d-flex align-items-center gap-2 mb-0">
+                        <i class="ti ti-brain text-warning"></i>
+                        Skill Management
                     </h4>
 
-                    <button class="btn-gold" data-bs-toggle="modal" data-bs-target="#skillModal">
-                        <i class="ti ti-plus"></i> Add Skill
+                    <button class="btn-gold" data-bs-toggle="modal" data-bs-target="#addSkillModal">
+                        + Add Skill
                     </button>
                 </div>
-                <div class="table-responsive">
-                    <table class="table table-striped table-hover align-middle">
 
-                        <thead class="table-dark">
-                            <tr>
-                                <th>#</th>
-                                <th>Skill Title</th>
-                                <th>Description</th>
-                                <th>Status</th>
-                                <th width="150">Action</th>
-                            </tr>
-                        </thead>
+                {{-- TABLE --}}
+                <div class="card bg-dark border-0">
+                    <div class="table-responsive">
 
-                        <tbody>
-                            @forelse($skills as $key => $skill)
+                        <table class="table table-dark table-hover align-middle mb-0">
+                            <thead>
                                 <tr>
-                                    <td>{{ $key + 1 }}</td>
-
-                                    <td>
-                                        <strong>{{ $skill->name ?? '-' }}</strong>
-                                    </td>
-
-                                    <td>
-                                        {{ $skill->description ?? '-' }}
-                                    </td>
-
-                                    <td>
-                                        {{-- @if ($skill->is_active)
-                                                    <span class="badge bg-success">
-                                                        Active
-                                                    </span>
-                                                @else
-                                                    <span class="badge bg-secondary">
-                                                        Inactive
-                                                    </span>
-                                                @endif --}}
-                                    </td>
-
-                                    <td>
-                                        <a href="#" class="btn btn-sm btn-info">
-                                            Edit
-                                        </a>
-
-                                        <form action="#" method="POST" class="d-inline">
-                                            @csrf
-                                            @method('DELETE')
-
-                                            <button type="submit" class="btn btn-sm btn-danger"
-                                                onclick="return confirm('Are you sure?')">
-                                                Delete
-                                            </button>
-                                        </form>
-                                    </td>
+                                    <th>#</th>
+                                    <th>Skill</th>
+                                    <th>Description</th>
+                                    <th>Status</th>
+                                    <th class="text-end">Action</th>
                                 </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="5" class="text-center text-muted py-4">
-                                        No skills found
-                                    </td>
-                                </tr>
-                            @endforelse
-                        </tbody>
+                            </thead>
 
-                    </table>
+                            <tbody>
+                                @foreach ($skills as $key => $skill)
+                                    <tr>
+                                        <td>{{ $key + 1 }}</td>
+
+                                        <td class="text-white fw-semibold">
+                                            {{ $skill->name }}
+                                        </td>
+
+                                        <td class="text-muted">
+                                            {{ Str::limit($skill->description, 80) }}
+                                        </td>
+
+                                        <td>
+                                            <span class="badge {{ $skill->is_active ? 'bg-success' : 'bg-secondary' }}">
+                                                {{ $skill->is_active ? 'Active' : 'Inactive' }}
+                                            </span>
+                                        </td>
+
+                                        <td class="text-end">
+                                            {{-- DELETE --}}
+                                            <form action="{{ url('/admin/skill/' . $skill->id) }}" method="POST"
+                                                style="display:inline;">
+                                                @csrf
+                                                @method('DELETE')
+
+                                                <button class="btn btn-sm btn-outline-danger"
+                                                    onclick="return confirm('Delete this skill?')">
+                                                    Delete
+                                                </button>
+                                            </form>
+
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+
+                        </table>
+
+                    </div>
                 </div>
+
             </div>
         </div>
 
-
     </div>
 
-    <!-- ADD SKILL MODAL -->
+    {{-- ================= ADD MODAL ================= --}}
+    <div class="modal fade" id="addSkillModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark text-white">
 
-    <div class="modal fade" id="skillModal" tabindex="-1" aria-labelledby="skillModalLabel" aria-hidden="true">
-
-        ```
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-
-            <div class="modal-content bg-dark">
-
-                <!-- HEADER -->
-                <div class="modal-header">
-                    <h5 class="modal-title" id="skillModalLabel">
-                        Add Skill
-                    </h5>
-
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                    </button>
-                </div>
-
-                <!-- FORM -->
-                <form action="/" method="POST">
-
+                <form action="{{ url('/admin/skill') }}" method="POST">
                     @csrf
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add Skill</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
 
                     <div class="modal-body">
 
                         <div class="mb-3">
-                            <label class="form-label">
-                                Skill Name
-                            </label>
-
-                            <input type="text" name="name" class="form-control" placeholder="Enter skill name"
-                                required>
+                            <label>Skill Name</label>
+                            <input type="text" name="name" class="form-control bg-dark text-white" required>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">
-                                Description
-                            </label>
-
-                            <textarea name="description" rows="4" class="form-control" placeholder="Enter description"></textarea>
+                            <label>Description</label>
+                            <textarea name="description" class="form-control bg-dark text-white"></textarea>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">
-                                Status
-                            </label>
-
-                            <select name="is_active" class="form-select">
-
-                                <option value="1">
-                                    Active
-                                </option>
-
-                                <option value="0">
-                                    Inactive
-                                </option>
-
+                            <label>Status</label>
+                            <select name="is_active" class="form-select bg-dark text-white">
+                                <option value="1">Active</option>
+                                <option value="0">Inactive</option>
                             </select>
                         </div>
 
                     </div>
 
-                    <!-- FOOTER -->
                     <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                            Cancel
-                        </button>
-
-                        <button type="submit" class="btn-gold">
-                            Save Skill
-                        </button>
-
+                        <button class="btn-gold">Save</button>
                     </div>
 
                 </form>
 
             </div>
-
         </div>
-
-
     </div>
+
+    {{-- ================= EDIT MODALS ================= --}}
+    {{-- @foreach ($skills as $skill)
+        <div class="modal fade" id="editSkillModal{{ $skill->id }}" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content bg-dark text-white">
+
+                    <form action="{{ url('/skills/' . $skill->id) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+
+                        <div class="modal-header">
+                            <h5 class="modal-title">Edit Skill</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                        </div>
+
+                        <div class="modal-body">
+
+                            <div class="mb-3">
+                                <label>Skill Name</label>
+                                <input type="text" name="name" value="{{ $skill->name }}"
+                                    class="form-control bg-dark text-white" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label>Description</label>
+                                <textarea name="description" class="form-control bg-dark text-white">{{ $skill->description }}</textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label>Status</label>
+                                <select name="is_active" class="form-select bg-dark text-white">
+                                    <option value="1" {{ $skill->is_active ? 'selected' : '' }}>Active</option>
+                                    <option value="0" {{ !$skill->is_active ? 'selected' : '' }}>Inactive</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button class="btn btn-warning">Update</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    @endforeach --}}
 @endsection

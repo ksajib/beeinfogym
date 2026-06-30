@@ -64,6 +64,8 @@ Route::prefix("admin")->middleware("auth")->group(function () {
     Route::get("/dashboard", [DashboardController::class, "index"]);
     Route::get("/post-jobs", [PostJobController::class, "index"]);
     Route::get("/skill", [SkillController::class, "index"]);
+    Route::post("/skill", [SkillController::class, "store"]);
+    Route::delete("/skill/{id}", [SkillController::class, "destroy"]);
 });
 
 // User Dashboard Routes
