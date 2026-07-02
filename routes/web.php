@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AccessController;
 use App\Http\Controllers\AdminDashboard\BenifitController;
 use App\Http\Controllers\AdminDashboard\DashboardController;
+use App\Http\Controllers\AdminDashboard\DocumentsController;
 use App\Http\Controllers\AdminDashboard\PostJobController;
 use App\Http\Controllers\AdminDashboard\SkillController;
 use App\Http\Controllers\Auth\LoginController;
@@ -70,6 +71,9 @@ Route::prefix("admin")->middleware("auth")->group(function () {
     Route::get("/benefit", [BenifitController::class, "index"]);
     Route::post("/benefit", [BenifitController::class, "store"]);
     Route::delete("/benefit/{id}", [BenifitController::class, "destroy"]);
+    Route::get("/required-documents", [DocumentsController::class, "index"]);
+    Route::post("/required-documents", [DocumentsController::class, "store"]);
+    Route::delete("/required-documents/{id}", [DocumentsController::class, "destroy"]);
 });
 
 // User Dashboard Routes

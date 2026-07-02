@@ -14,7 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <style>
@@ -1099,7 +1099,7 @@
                     class="nav-badge">3</span></a>
             <a class="nav-item" href="/admin/skill"><i class="ti ti-bulb"></i> Skill</a>
             <a class="nav-item" href="/admin/benefit"><i class="ti ti-gift"></i> Benefit</a>
-            <a class="nav-item" href="#"><i class="ti ti-file-cv"></i> My Resume</a>
+            <a class="nav-item" href="/admin/required-documents"><i class="ti ti-folder"></i> Required Documents</a>
         </div>
 
         <div class="nav-section">
@@ -1151,11 +1151,16 @@
         </header>
 
         @yield('content')
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
+    {{-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    {!! Toastr::message() !!}
 </body>
 
 </html>
