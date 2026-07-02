@@ -1,6 +1,31 @@
 @extends('layouts.dashboard')
 
 @section('content')
+    <style>
+        .bootbox .modal-content {
+            background-color: #1e1e2f !important;
+            color: #ffffff !important;
+            border: 1px solid #333;
+        }
+
+        .bootbox .modal-header {
+            border-bottom: 1px solid #333 !important;
+        }
+
+        .bootbox .modal-footer {
+            border-top: 1px solid #333 !important;
+        }
+
+        .bootbox .bootbox-body {
+            color: #e5e5e5 !important;
+        }
+
+        /* Buttons spacing fix */
+        .bootbox .modal-footer .btn {
+            border-radius: 6px;
+        }
+    </style>
+
     <div class="main-content app-content mt-0">
 
         <div class="side-app">
@@ -20,7 +45,7 @@
 
                 {{-- TABLE --}}
                 <div class="card bg-dark border-0">
-                    <div class="table-responsive">
+                    <div class="table-responsive rounded">
 
                         <table class="table table-dark table-hover align-middle mb-0">
                             <thead>
@@ -53,18 +78,15 @@
                                         </td>
 
                                         <td class="text-end">
-                                            {{-- DELETE --}}
                                             <form action="{{ url('/admin/skill/' . $skill->id) }}" method="POST"
-                                                style="display:inline;">
+                                                class="delete-form d-inline">
                                                 @csrf
                                                 @method('DELETE')
 
-                                                <button class="btn btn-sm btn-outline-danger"
-                                                    onclick="return confirm('Delete this skill?')">
+                                                <button type="button" class="btn-primary-cta btn-delete">
                                                     Delete
                                                 </button>
                                             </form>
-
                                         </td>
                                     </tr>
                                 @endforeach
@@ -125,53 +147,34 @@
         </div>
     </div>
 
-    {{-- ================= EDIT MODALS ================= --}}
-    {{-- @foreach ($skills as $skill)
-        <div class="modal fade" id="editSkillModal{{ $skill->id }}" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content bg-dark text-white">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>
+    <script>
+        $(document).on('click', '.btn-delete', function(e) {
+            e.preventDefault();
 
-                    <form action="{{ url('/skills/' . $skill->id) }}" method="POST">
-                        @csrf
-                        @method('PUT')
+            let form = $(this).closest('form');
 
-                        <div class="modal-header">
-                            <h5 class="modal-title">Edit Skill</h5>
-                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                        </div>
-
-                        <div class="modal-body">
-
-                            <div class="mb-3">
-                                <label>Skill Name</label>
-                                <input type="text" name="name" value="{{ $skill->name }}"
-                                    class="form-control bg-dark text-white" required>
-                            </div>
-
-                            <div class="mb-3">
-                                <label>Description</label>
-                                <textarea name="description" class="form-control bg-dark text-white">{{ $skill->description }}</textarea>
-                            </div>
-
-                            <div class="mb-3">
-                                <label>Status</label>
-                                <select name="is_active" class="form-select bg-dark text-white">
-                                    <option value="1" {{ $skill->is_active ? 'selected' : '' }}>Active</option>
-                                    <option value="0" {{ !$skill->is_active ? 'selected' : '' }}>Inactive</option>
-                                </select>
-                            </div>
-
-                        </div>
-
-                        <div class="modal-footer">
-                            <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button class="btn btn-warning">Update</button>
-                        </div>
-
-                    </form>
-
-                </div>
-            </div>
-        </div>
-    @endforeach --}}
+            bootbox.confirm({
+                title: "<span style='color:#fff'>Confirm Delete</span>",
+                message: "<span style='color:#ccc'>Are you sure you want to delete this skill?</span>",
+                buttons: {
+                    confirm: {
+                        label: '<i class="fa fa-check"></i> Yes, Delete',
+                        className: 'btn-primary-cta'
+                    },
+                    cancel: {
+                        label: '<i class="fa fa-times"></i> Cancel',
+                        className: 'btn-primary-cta'
+                    }
+                },
+                callback: function(result) {
+                    if (result) {
+                        form.submit();
+                    }
+                }
+            });
+        });
+    </script>
 @endsection

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\AdminDashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Skill;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class SkillController extends Controller
@@ -35,28 +36,30 @@ class SkillController extends Controller
             );
 
             if ($skill->wasRecentlyCreated) {
-                return redirect()->back()->with([
-                    'toast' => [
-                        'type' => 'success',
-                        'message' => 'Skill created successfully!'
-                    ]
-                ]);
+                Toastr::success('Skill created successfully!', 'Success');
+                return redirect()->back();
             }
-
-            return redirect()->back()->with([
-                'toast' => [
-                    'type' => 'info',
-                    'message' => 'Skill already exists!'
-                ]
-            ]);
+            Toastr::info('Skill already exists!', 'Info');
         } catch (\Throwable $th) {
+            Toastr::error('Something went wrong!', 'Error');
 
-            return redirect()->back()->with([
-                'toast' => [
-                    'type' => 'error',
-                    'message' => 'Something went wrong: ' . $th->getMessage()
-                ]
-            ]);
+            return redirect()->back();
+        }
+    }
+
+    public function destroy($id)
+    {
+        try {
+            $skill = Skill::findOrFail($id);
+            $skill->delete();
+
+            Toastr::success('Skill deleted successfully!', 'Success');
+
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            Toastr::error('Something went wrong!', 'Error');
+
+            return redirect()->back();
         }
     }
 }
