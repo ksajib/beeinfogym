@@ -35,11 +35,11 @@
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <h4 class="text-white fw-bold d-flex align-items-center gap-2 mb-0">
                         <i class="ti ti-brain text-warning"></i>
-                        Skill Management
+                        Required Document Management
                     </h4>
 
                     <button class="btn-gold" data-bs-toggle="modal" data-bs-target="#addSkillModal">
-                        + Add Skill
+                        + Add Required Document
                     </button>
                 </div>
 
@@ -51,35 +51,30 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Skill</th>
-                                    <th>Description</th>
+                                    <th>Required Document</th>
                                     <th>Status</th>
                                     <th class="text-end">Action</th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                @foreach ($skills as $key => $skill)
+                                @foreach ($documents as $key => $benefit)
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
 
                                         <td class="text-white fw-semibold">
-                                            {{ $skill->name }}
-                                        </td>
-
-                                        <td class="text-muted">
-                                            {{ Str::limit($skill->description, 80) }}
+                                            {{ $benefit->name }}
                                         </td>
 
                                         <td>
-                                            <span class="badge {{ $skill->is_active ? 'bg-success' : 'bg-secondary' }}">
-                                                {{ $skill->is_active ? 'Active' : 'Inactive' }}
+                                            <span class="badge {{ $benefit->is_active ? 'bg-success' : 'bg-secondary' }}">
+                                                {{ $benefit->is_active ? 'Active' : 'Inactive' }}
                                             </span>
                                         </td>
 
                                         <td class="text-end">
-                                            <form action="{{ url('/admin/skill/' . $skill->id) }}" method="POST"
-                                                class="delete-form d-inline">
+                                            <form action="{{ url('/admin/required-documents/' . $benefit->id) }}"
+                                                method="POST" class="delete-form d-inline">
                                                 @csrf
                                                 @method('DELETE')
 
@@ -107,24 +102,19 @@
         <div class="modal-dialog">
             <div class="modal-content bg-dark text-white">
 
-                <form action="{{ url('/admin/skill') }}" method="POST">
+                <form action="{{ url('/admin/required-documents') }}" method="POST">
                     @csrf
 
                     <div class="modal-header">
-                        <h5 class="modal-title">Add Skill</h5>
+                        <h5 class="modal-title">Add Required Document</h5>
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                     </div>
 
                     <div class="modal-body">
 
                         <div class="mb-3">
-                            <label>Skill Name</label>
+                            <label>Document Name</label>
                             <input type="text" name="name" class="form-control bg-dark text-white" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label>Description</label>
-                            <textarea name="description" class="form-control bg-dark text-white"></textarea>
                         </div>
 
                         <div class="mb-3">
@@ -158,7 +148,7 @@
 
             bootbox.confirm({
                 title: "<span style='color:#fff'>Confirm Delete</span>",
-                message: "<span style='color:#ccc'>Are you sure you want to delete this skill?</span>",
+                message: "<span style='color:#ccc'>Are you sure you want to delete this Required Document?</span>",
                 buttons: {
                     confirm: {
                         label: '<i class="fa fa-check"></i> Yes, Delete',

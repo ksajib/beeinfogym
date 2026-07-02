@@ -3,42 +3,63 @@
 namespace App\Http\Controllers\AdminDashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Skill;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class SkillController extends Controller
 {
     public function index()
     {
-        $skills = [
-            [
-                'gym_id' => 1,
-                'member_id' => 41966,
-                'title' => 'Cardio Training',
-                'description' => 'Running and endurance exercise',
-                'level' => 2,
-                'is_active' => 1,
-                'created_by' => 1,
-            ],
-            [
-                'gym_id' => 1,
-                'member_id' => 41966,
-                'title' => 'Weight Lifting',
-                'description' => 'Advanced weight lifting techniques',
-                'level' => 3,
-                'is_active' => 1,
-                'created_by' => 1,
-            ],
-            [
-                'gym_id' => 1,
-                'member_id' => 41966,
-                'title' => 'Yoga Training',
-                'description' => 'Flexibility and balance training',
-                'level' => 1,
-                'is_active' => 1,
-                'created_by' => 1,
-            ],
-        ];
+        $skills = Skill::get();
 
         return view("pages.AdminDashboard.skill", compact("skills"));
+    }
+
+    public function store(Request $req)
+    {
+        try {
+
+            $req->validate([
+                'name' => 'required|string|max:255',
+                'description' => 'nullable|string',
+                'is_active' => 'nullable|boolean'
+            ]);
+
+            // ✔ Check only by name
+            $skill = Skill::firstOrCreate(
+                ['name' => $req->name],
+                [
+                    'description' => $req->description,
+                    'is_active' => $req->is_active ?? 1
+                ]
+            );
+
+            if ($skill->wasRecentlyCreated) {
+                Toastr::success('Skill created successfully!', 'Success');
+                return redirect()->back();
+            }
+            Toastr::info('Skill already exists!', 'Info');
+        } catch (\Throwable $th) {
+            Toastr::error('Something went wrong!', 'Error');
+
+            return redirect()->back();
+        }
+    }
+
+    public function destroy($id)
+    {
+        try {
+            $skill = Skill::findOrFail($id);
+            $skill->delete();
+
+            Toastr::success('Skill deleted successfully!', 'Success');
+
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            Toastr::error('Something went wrong!', 'Error');
+
+            return redirect()->back();
+        }
     }
 }

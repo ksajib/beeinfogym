@@ -45,7 +45,7 @@ class LoginController extends Controller
 
             $user = Auth::user();
 
-            $redirect = match ($user->userType) {
+            $redirect = match ($user->user_type) {
                 'admin' => '/admin/dashboard',
                 default => '/careers',
             };

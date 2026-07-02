@@ -11,7 +11,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <style>
         * {
@@ -1057,12 +1061,31 @@
             cursor: pointer;
             margin-top: auto
         }
+
+        .btn-primary-cta {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 5px 8px;
+            background: var(--accent);
+            color: var(--white);
+            font-family: var(--fira-sans);
+            font-weight: 400;
+            font-size: 11px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            border-radius: 2px;
+            overflow: hidden;
+        }
     </style>
 </head>
 
 <body>
 
-    <!-- SIDEBAR -->
     <aside class="sidebar">
         <div class="logo">
             <div class="logo-title">Bee Info</div>
@@ -1075,7 +1098,8 @@
             <a class="nav-item" href="/admin/post-jobs"><i class="ti ti-file-text"></i> Post Jobs <span
                     class="nav-badge">3</span></a>
             <a class="nav-item" href="/admin/skill"><i class="ti ti-bulb"></i> Skill</a>
-            <a class="nav-item" href="#"><i class="ti ti-file-cv"></i> My Resume</a>
+            <a class="nav-item" href="/admin/benefit"><i class="ti ti-gift"></i> Benefit</a>
+            <a class="nav-item" href="/admin/required-documents"><i class="ti ti-folder"></i> Required Documents</a>
         </div>
 
         <div class="nav-section">
@@ -1109,10 +1133,7 @@
         </div>
     </aside>
 
-    <!-- MAIN -->
     <div class="main">
-
-        <!-- TOPBAR -->
         <header class="topbar">
             <span class="portal-label">Portal</span>
             <span class="breadcrumb-sep">›</span>
@@ -1130,11 +1151,16 @@
         </header>
 
         @yield('content')
-    </div><!-- /main -->
+
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
-    <script src="//unpkg.com/alpinejs" defer></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    {!! Toastr::message() !!}
 </body>
 
 </html>
