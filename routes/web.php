@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AccessController;
+use App\Http\Controllers\AdminDashboard\BenifitController;
 use App\Http\Controllers\AdminDashboard\DashboardController;
 use App\Http\Controllers\AdminDashboard\PostJobController;
 use App\Http\Controllers\AdminDashboard\SkillController;
@@ -66,6 +67,9 @@ Route::prefix("admin")->middleware("auth")->group(function () {
     Route::get("/skill", [SkillController::class, "index"]);
     Route::post("/skill", [SkillController::class, "store"]);
     Route::delete("/skill/{id}", [SkillController::class, "destroy"]);
+    Route::get("/benefit", [BenifitController::class, "index"]);
+    Route::post("/benefit", [BenifitController::class, "store"]);
+    Route::delete("/benefit/{id}", [BenifitController::class, "destroy"]);
 });
 
 // User Dashboard Routes

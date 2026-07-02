@@ -1098,6 +1098,7 @@
             <a class="nav-item" href="/admin/post-jobs"><i class="ti ti-file-text"></i> Post Jobs <span
                     class="nav-badge">3</span></a>
             <a class="nav-item" href="/admin/skill"><i class="ti ti-bulb"></i> Skill</a>
+            <a class="nav-item" href="/admin/benefit"><i class="ti ti-gift"></i> Benefit</a>
             <a class="nav-item" href="#"><i class="ti ti-file-cv"></i> My Resume</a>
         </div>
 
