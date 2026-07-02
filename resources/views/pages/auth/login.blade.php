@@ -72,7 +72,6 @@
 
                             if (res.ok) {
                                 const data = await res.json()
-                                console.log(data)
                                 showToast('success', 'Success', data.message);
                                 e.target.reset();
                                 this.errors = {};

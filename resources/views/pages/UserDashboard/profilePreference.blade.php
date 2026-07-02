@@ -184,7 +184,9 @@
                     btn.innerText = 'Saved';
                 })
                 .finally(() => {
-                    setTimeout(() => btn.innerText = 'Save Visibility', 1500);
+                    setTimeout(() => btn.innerText = 'Save showToast('
+                        success ', '
+                        Success ', data.message)', 1500);
                 });
         }
 

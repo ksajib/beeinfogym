@@ -35,11 +35,11 @@
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <h4 class="text-white fw-bold d-flex align-items-center gap-2 mb-0">
                         <i class="ti ti-brain text-warning"></i>
-                        Skill Management
+                        Benefit Management
                     </h4>
 
                     <button class="btn-gold" data-bs-toggle="modal" data-bs-target="#addSkillModal">
-                        + Add Skill
+                        + Add Benefit
                     </button>
                 </div>
 
@@ -51,7 +51,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Skill</th>
+                                    <th>Benefit</th>
                                     <th>Description</th>
                                     <th>Status</th>
                                     <th class="text-end">Action</th>
@@ -59,26 +59,26 @@
                             </thead>
 
                             <tbody>
-                                @foreach ($skills as $key => $skill)
+                                @foreach ($benefits as $key => $benefit)
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
 
                                         <td class="text-white fw-semibold">
-                                            {{ $skill->name }}
+                                            {{ $benefit->name }}
                                         </td>
 
                                         <td class="text-muted">
-                                            {{ Str::limit($skill->description, 80) }}
+                                            {{ Str::limit($benefit->description, 80) }}
                                         </td>
 
                                         <td>
-                                            <span class="badge {{ $skill->is_active ? 'bg-success' : 'bg-secondary' }}">
-                                                {{ $skill->is_active ? 'Active' : 'Inactive' }}
+                                            <span class="badge {{ $benefit->status ? 'bg-success' : 'bg-secondary' }}">
+                                                {{ $benefit->status ? 'Active' : 'Inactive' }}
                                             </span>
                                         </td>
 
                                         <td class="text-end">
-                                            <form action="{{ url('/admin/skill/' . $skill->id) }}" method="POST"
+                                            <form action="{{ url('/admin/benefit/' . $benefit->id) }}" method="POST"
                                                 class="delete-form d-inline">
                                                 @csrf
                                                 @method('DELETE')
@@ -107,18 +107,18 @@
         <div class="modal-dialog">
             <div class="modal-content bg-dark text-white">
 
-                <form action="{{ url('/admin/skill') }}" method="POST">
+                <form action="{{ url('/admin/benefit') }}" method="POST">
                     @csrf
 
                     <div class="modal-header">
-                        <h5 class="modal-title">Add Skill</h5>
+                        <h5 class="modal-title">Add Benefit</h5>
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                     </div>
 
                     <div class="modal-body">
 
                         <div class="mb-3">
-                            <label>Skill Name</label>
+                            <label>Benefit Name</label>
                             <input type="text" name="name" class="form-control bg-dark text-white" required>
                         </div>
 
@@ -158,7 +158,7 @@
 
             bootbox.confirm({
                 title: "<span style='color:#fff'>Confirm Delete</span>",
-                message: "<span style='color:#ccc'>Are you sure you want to delete this skill?</span>",
+                message: "<span style='color:#ccc'>Are you sure you want to delete this Benefit?</span>",
                 buttons: {
                     confirm: {
                         label: '<i class="fa fa-check"></i> Yes, Delete',
